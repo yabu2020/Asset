@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import Home from "./Home";
-import Terms from "./Terms";
+import Admin from "./Admin";
 
 function App() {
   const [cUSer, setCuser] = useState({});
@@ -13,9 +13,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Signup />} />
-        <Route path="/Login" element={<Login setCuser={setCuser} />} />
+        <Route path="/login" element={<Login setCuser={setCuser} />} />
         <Route path="/home" element={<Home cUSer={cUSer} />} />
-        <Route path="/Terms" element={<Terms />} />
+        <Route path="/dashboard" element={<Admin cUSer={cUSer} />} />
       </Routes>
     </BrowserRouter>
   );
