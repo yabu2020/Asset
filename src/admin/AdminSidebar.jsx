@@ -25,7 +25,7 @@ function Sidebar() {
         },
         {
             path: "resetpassword",
-            name: "ResetPassword",
+            name: "Reset Password",
             icon: <FaCommentAlt />
         },
         {
