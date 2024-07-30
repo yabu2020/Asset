@@ -25,7 +25,7 @@ function Admin() {
 
   return (
     <div>
-      <h1>welcom admin</h1>
+      <h1>welcome admin</h1>
 
       <form onSubmit={handleSubmit}>
         <p>create user</p>
