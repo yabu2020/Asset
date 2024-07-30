@@ -1,0 +1,46 @@
+.assets-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #1e1e1e; /* Dark background to contrast with the blue theme */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .assets-container h2 {
+    color: #e0e0e0; /* Light grey color for the header text */
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .assets-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .assets-table th, .assets-table td {
+    border: 1px solid #333; /* Darker border color for a sleek look */
+    padding: 12px;
+    text-align: left;
+    color: #e0e0e0; /* Light grey text color for better readability */
+  }
+  
+  .assets-table th {
+    background-color: #0056b3; /* Deep blue for table headers */
+    color: #ffffff; /* White text color for headers */
+  }
+  
+  .assets-table tr:nth-child(even) {
+    background-color: #2c2c2c; /* Slightly lighter grey for alternating rows */
+  }
+  
+  .assets-table tr:hover {
+    background-color: #404040; /* Hover effect for better interactivity */
+  }
+  
+  .message {
+    margin-bottom: 20px;
+    color: #ff4d4d; /* Bright red for error messages */
+    font-weight: bold;
+  }
+  

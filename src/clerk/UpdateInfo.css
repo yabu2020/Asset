@@ -1,0 +1,74 @@
+/* UpdateUserInfo.css */
+.update-container {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    max-width: 600px; /* Max width for the form container */
+    margin: 20px auto; /* Center align */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+h2 {
+    text-align: center;
+    color: #00aaff; /* Blue color for the heading */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333; /* Dark border */
+    border-radius: 4px;
+    background: #333; /* Dark background for input fields */
+    color: #fff; /* White text color in input fields */
+    font-size: 14px;
+}
+
+button {
+    background: #00aaff; /* Blue background for the button */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+button:hover {
+    background: #007bb5; /* Darker blue on hover */
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #00aaff; /* Blue color for the link */
+    text-decoration: none;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
