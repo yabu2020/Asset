@@ -122,7 +122,7 @@ function Createuser({ setUsers }) {
           <button type="submit" className="submit-button">Add User</button>
         </form>
 
-        <Link to="/admin">Back to Menu</Link>
+        
       </div>
     </div>
   );

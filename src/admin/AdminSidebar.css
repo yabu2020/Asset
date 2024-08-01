@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +11,7 @@ body {
 
 .container {
     display: flex;
-    height: 100vh; /* Full viewport height */
+     /* Full viewport height */
 }
 
 main {
@@ -82,4 +81,3 @@ main {
 .sidebar.open .link_text {
     display: none;
 }
-

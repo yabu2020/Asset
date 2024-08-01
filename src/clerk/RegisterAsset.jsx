@@ -5,6 +5,7 @@ import './RegisterAsset.css'; // Import the CSS file
 
 function RegisterAsset() {
   const [name, setName] = useState('');
+  const [assetno, setAssetno] = useState('');
   const [serialno, setSerialno] = useState('');
   const [model, setModel] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -15,10 +16,11 @@ function RegisterAsset() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:3001/registerasset', { name, serialno, model, quantity, description, status })
+    axios.post('http://localhost:3001/registerasset', { name,assetno, serialno, model, quantity, description, status })
       .then(response => {
         setMessage(`Asset registered successfully: ${response.data.name}`);
         setName('');
+        setAssetno('');
         setSerialno('');
         setModel('');
         setQuantity('');
@@ -37,6 +39,10 @@ function RegisterAsset() {
         <div>
           <label>Asset Name:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div>
+          <label>Asset Number:</label>
+          <input type="text" value={assetno} onChange={(e) => setAssetno(e.target.value)} required />
         </div>
         <div>
           <label>Serial No</label>
@@ -65,7 +71,7 @@ function RegisterAsset() {
         <button type="submit">Register Asset</button>
       </form>
       {message && <p className="message">{message}</p>}
-      <Link to="/clerk" >Back to Menu</Link>
+      
     </div>
   );
 }

@@ -13,7 +13,7 @@ import Createuser from '../admin/Createuser';
 import UsersList from '../admin/UsersList';
 import ClerkSidebar from '../clerk/ClerkSidebar'; 
 import RegisterAsset from '../clerk/RegisterAsset'; 
-import UpdateInfo from '../clerk/UpdateInfo';
+import AssetToUser from '../clerk/AssetToUser';
 import ListAssets from '../clerk/ListAssets'; // Import the new component
 
 
@@ -43,7 +43,7 @@ function App() {
           <Route path="/Viewasset" element={<Viewasset />} />
           <Route path="/clerk" element={<ClerkSidebar />} />
           <Route path="/registerasset" element={<RegisterAsset />} />
-          <Route path="/updateinfo/:id" element={<UpdateInfo />} />
+          <Route path="/assettouser" element={<AssetToUser />} />
           <Route path="/assets" element={<ListAssets />} /> 
           <Route path="/userpage" element={<Userpage cUSer={cUSer} />} />
           <Route path="/approver" element={<Approver cUSer={cUSer} />} />

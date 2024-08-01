@@ -59,7 +59,7 @@ function Resetpassword() {
         {resetMessage && <p className="success-message">{resetMessage}</p>}
       </form>
 
-      <Link to="/admin">Back to Menu</Link>
+     
     </div>
   );
 }

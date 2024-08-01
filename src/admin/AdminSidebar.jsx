@@ -8,7 +8,7 @@ import {
     FaEye
 } from "react-icons/fa";
 
-function Sidebar() {
+function Sidebar({ children }) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
@@ -33,16 +33,12 @@ function Sidebar() {
             name: "View Asset",
             icon: <FaEye />
         },
-        {
-            path: "/",
-            name: "Sign Out",
-           
-        }
+      
     ];
 
     return (
         <div className="container">
-            <div style={{ width: isOpen ? "300px" : "100px" }} className="sidebar">
+            <div style={{ width: isOpen ? "220px" : "100px" }} className="sidebar">
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Admin Page</h1>
                     <div style={{ marginLeft: isOpen ? "70px" : "0px" }} className="bars">
@@ -58,6 +54,7 @@ function Sidebar() {
                     ))
                 }
             </div>
+            <main>{children}</main>
         </div>
     );
 }

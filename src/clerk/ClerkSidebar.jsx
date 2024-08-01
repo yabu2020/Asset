@@ -26,8 +26,8 @@ function ClerkSidebar({ children }) {
             icon: <FaUserPlus />
         },
         {
-            path: "/updateinfo/:id",
-            name: "Update Information",
+            path: "/assettouser",
+            name: "Asset To User",
             icon: <FaEdit />
         },
         {
@@ -40,15 +40,12 @@ function ClerkSidebar({ children }) {
             name: "View Asset",
             icon: <FaEye />
         },
-        {
-            path:"/",
-            name:"SignOut",
-           },
+       
     ];
 
     return (
         <div className="container">
-            <div style={{ width: isOpen ? "300px" : "100px" }} className="sidebar">
+            <div style={{ width: isOpen ? "220px" : "100px" }} className="sidebar">
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Property Clerk</h1>
                     <div style={{ marginLeft: isOpen ? "70px" : "0px" }} className="bars">

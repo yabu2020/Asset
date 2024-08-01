@@ -1,7 +1,7 @@
 /* ClerkSidebar.css */
 .container {
     display: flex;
-    height: 100vh; /* Full viewport height */
+     /* Full viewport height */
 }
 body {
     margin: 0;

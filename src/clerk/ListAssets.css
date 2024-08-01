@@ -16,8 +16,9 @@
   .assets-table {
     width: 100%;
     border-collapse: collapse;
+    padding: 5px;
+    box-sizing: border-box;
   }
-  
   .assets-table th, .assets-table td {
     border: 1px solid #333; /* Darker border color for a sleek look */
     padding: 12px;

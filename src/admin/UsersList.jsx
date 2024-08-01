@@ -36,7 +36,7 @@ function UsersList() {
                     ))}
                 </tbody>
             </table>
-            <Link to="/admin">Back to Menu</Link>
+            
         </div>
     );
 }
