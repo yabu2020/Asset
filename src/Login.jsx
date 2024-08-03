@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './Login.css'; // Import the updated CSS file
-
+import './Login.css'; // Import the updated CSS file if needed
 
 function Login({ setCuser }) {
   const [email, setEmail] = useState("");
@@ -33,32 +32,32 @@ function Login({ setCuser }) {
     if (hasError) return; // Prevent form submission if there are errors
 
     axios
-    .post("http://localhost:3001", { email, password })
-    .then((result) => {
-      const response = result.data;
-      if (response[0] === "good") {
-        const userData = response[1];
-        setCuser(userData); // Set current user
-        // Redirect based on role
-        switch (userData.role) {
-          case "Admin":
-            navigate("/admin"); // Redirect admin to dashboard
-            break;
-          case "user":
-            navigate("/userpage"); // Redirect user to user page
-            break;
-          case "Clerk":
-            navigate("/clerk"); // Redirect clerk to clerk page
-            break;
-          case "asset approver":
-            navigate("/approver"); // Redirect asset approver to asset approver page
-            break;
-          default:
-            alert("You are not registered");
-        }
+      .post("http://localhost:3001", { email, password })
+      .then((result) => {
+        const response = result.data;
+        if (response[0] === "good") {
+          const userData = response[1];
+          setCuser(userData); // Set current user
+          // Redirect based on role
+          switch (userData.role) {
+            case "Admin":
+              navigate("/admin"); // Redirect admin to dashboard
+              break;
+            case "user":
+              navigate("/userpage"); // Redirect user to user page
+              break;
+            case "Clerk":
+              navigate("/clerk"); // Redirect clerk to clerk page
+              break;
+            case "asset approver":
+              navigate("/approver"); // Redirect asset approver to asset approver page
+              break;
+            default:
+              alert("You are not registered");
+          }
         } else {
-           // Handle error from the backend
-           if (response.message === "Incorrect password") {
+          // Handle error from the backend
+          if (response.message === "Incorrect password") {
             setPasswordError("Incorrect password");
           } else if (response.message === "No record found with this email") {
             setEmailError("No record found with this email");
@@ -89,10 +88,18 @@ function Login({ setCuser }) {
     navigate("/reset-password"); // Navigate to the password reset page or modal
   };
 
-
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+    <div className="bg-white-100 min-h-screen flex flex-col items-center">
+      {/* Image Container */}
+      <div className="w-full bg-gray-300">
+        <img 
+          src="/login.jpeg" // Replace with the path to your image
+          alt="Background" 
+          className="w-full h-54 object-cover" // Adjust height as needed
+        />
+      </div>
+      {/* Login Form Container */}
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg -mt-8"> {/* Adjust the negative margin here */}
         <h1 className="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">
           Login to Your Account
         </h1>
@@ -104,19 +111,17 @@ function Login({ setCuser }) {
             <input
               type="email"
               id="email"
+              name="email"
+              placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              name="email"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
               required
             />
             {emailError && <p className="text-red-500">{emailError}</p>}
           </div>
           <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block mb-2 text-sm text-gray-600"
-            >
+            <label htmlFor="password" className="block mb-2 text-sm text-gray-600">
               Password
             </label>
             <input
@@ -126,14 +131,14 @@ function Login({ setCuser }) {
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
               required
             />
             {passwordError && <p className="text-red-500">{passwordError}</p>}
           </div>
           <button
             type="submit"
-            className="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6"
+            className="w-32 bg-green-500 text-white py-2 rounded-lg mx-auto block hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4 mb-6"
           >
             Login
           </button>

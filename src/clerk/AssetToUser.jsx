@@ -1,58 +1,84 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './AssetToUser.css'; // Import the CSS file for styling
+import { Link } from "react-router-dom";
+import "./AssetToUser.css"; // Import the CSS file for styling
 
 function AssetToUser() {
   const [assets, setAssets] = useState([]);
   const [users, setUsers] = useState([]);
   const [assignedAssets, setAssignedAssets] = useState([]);
-  const [selectedAsset, setSelectedAsset] = useState('');
-  const [selectedUser, setSelectedUser] = useState('');
-  const [message, setMessage] = useState('');
+  const [selectedAsset, setSelectedAsset] = useState("");
+  const [selectedUser, setSelectedUser] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [assetsResponse, usersResponse, assignedAssetsResponse] = await Promise.all([
-          axios.get('http://localhost:3001/assets'),
-          axios.get('http://localhost:3001/users'),
-          axios.get('http://localhost:3001/assigned-assets')
-        ]);
+    // Fetch assets and users when component mounts
+    axios
+      .get("http://localhost:3001/assets")
+      .then((response) => {
+        setAssets(response.data);
+      })
+      .catch((error) => {
+        setMessage(
+          `Error: ${
+            error.response ? error.response.data.message : error.message
+          }`
+        );
+      });
 
-        setAssets(assetsResponse.data);
-        setUsers(usersResponse.data);
-        setAssignedAssets(assignedAssetsResponse.data);
-      } catch (error) {
-        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
-      }
-    };
+    axios
+      .get("http://localhost:3001/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        setMessage(
+          `Error: ${
+            error.response ? error.response.data.message : error.message
+          }`
+        );
+      });
 
-    fetchData();
-  }, []); // Empty dependency array means this runs once when component mounts
+    axios
+      .get("http://localhost:3001/assigned-assets")
+      .then((response) => {
+        setAssignedAssets(response.data);
+      })
+      .catch((error) => {
+        setMessage(
+          `Error: ${
+            error.response ? error.response.data.message : error.message
+          }`
+        );
+      });
+  }, []);
 
   const handleGiveAsset = () => {
     if (!selectedAsset || !selectedUser) {
-      setMessage('Please select an asset and a user.');
+      setMessage("Please select an asset and a user.");
       return;
     }
-  
-    axios.post('http://localhost:3001/giveasset', { assetId: selectedAsset, userId: selectedUser })
-      .then(response => {
-        setMessage('Asset given to user successfully');
-        setAssignedAssets(prev => [...prev, response.data]);
-        setSelectedAsset('');
-        setSelectedUser('');
+
+    axios
+      .post("http://localhost:3001/giveasset", {
+        assetId: selectedAsset,
+        userId: selectedUser,
       })
-      .catch(error => {
-        const errorMsg = error.response ? error.response.data.error : error.message;
-        setMessage(`Error: ${errorMsg}`);
+      .then((response) => {
+        setMessage("Asset given to user successfully");
+        // Update assigned assets table
+        setAssignedAssets((prev) => [...prev, response.data]);
+        // Clear selections
+        setSelectedAsset("");
+        setSelectedUser("");
+      })
+      .catch((error) => {
+        setMessage(error.message);
       });
   };
-  
-  console.log(selectedAsset);
+
   return (
     <div className="asset-to-user-container">
-      
       <h2>Assign Asset to User</h2>
       {message && <p className="message">{message}</p>}
 
@@ -63,10 +89,12 @@ function AssetToUser() {
           value={selectedAsset}
           onChange={(e) => setSelectedAsset(e.target.value)}
         >
-          <option value="" disabled>Select an Asset</option>
+          <option value="" disabled>
+            Select an Asset
+          </option>
           {assets.map((asset) => (
-            <option key={asset.assetid} value={asset.assetid}>
-              {asset.serialno} - {asset.name} (Qty: {asset.quantity})
+            <option key={asset._id} value={asset._id}>
+              {asset.serialno} - {asset.name}
             </option>
           ))}
         </select>
@@ -79,17 +107,20 @@ function AssetToUser() {
           value={selectedUser}
           onChange={(e) => setSelectedUser(e.target.value)}
         >
-          <option value="" disabled>Select a User</option>
+          <option value="" disabled>
+            Select a User
+          </option>
           {users.map((user) => (
-            <option key={user._id} value={user._id}>
+            <option key={user.email} value={user._id}>
               {user.email}
             </option>
           ))}
         </select>
       </div>
 
-      <button onClick={handleGiveAsset} className="give-asset-button">Give Asset</button>
-
+      <button onClick={handleGiveAsset} className="give-asset-button">
+        Give Asset
+      </button>
       <h3>Assigned Assets</h3>
       <table className="assigned-assets-table">
         <thead>
@@ -97,26 +128,30 @@ function AssetToUser() {
             <th>Asset Name</th>
             <th>Asset SerialNo</th>
             <th>Assigned To</th>
-            <th>User Department</th>
-            <th>Date Assigned</th>
+            <th>Name</th>
+            <th>Department</th>
           </tr>
         </thead>
         <tbody>
-          {assignedAssets.length > 0 ? assignedAssets.map((assignment, index) => (
-            <tr key={index}>
-              <td>{assignment.asset.name}</td>
-              <td>{assignment.asset.serialno}</td>
-              <td>{assignment.user.name}</td>
-              <td>{assignment.user.department}</td>
-              <td>{new Date(assignment.dateAssigned).toLocaleDateString()}</td>
-            </tr>
-          )) : (
+          {assignedAssets.length > 0 ? (
+            assignedAssets.map((assignment, index) => (
+              <tr key={index}>
+                <td>{assignment.asset.name}</td>
+                <td>{assignment.asset.serialno}</td>
+                <td>{assignment.user.email}</td>
+                <td className="capitalize">{assignment.user.name}</td>
+                <td className="capitalize flex justify-center">{assignment.user.department}</td>
+              </tr>
+            ))
+          ) : (
             <tr>
-              <td colSpan="5">No assets assigned</td>
+              <td colSpan="3">No assets assigned</td>
             </tr>
           )}
         </tbody>
       </table>
+
+     
     </div>
   );
 }

@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import "./AdminSidebar.css";
 import { NavLink } from 'react-router-dom';
-import {
-    FaBars,
-    FaUserAlt,
-    FaCommentAlt,
-    FaEye
-} from "react-icons/fa";
+import { FaBars, FaUserAlt, FaCommentAlt, FaEye } from "react-icons/fa";
+
 
 function Sidebar({ children }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,32 +24,33 @@ function Sidebar({ children }) {
             icon: <FaCommentAlt />
         },
         {
-            path: "Viewasset",
+            path: "/Viewasset",
             name: "View Asset",
             icon: <FaEye />
         },
-      
     ];
 
     return (
-        <div className="container">
-            <div style={{ width: isOpen ? "220px" : "100px" }} className="sidebar">
-                <div className="top_section">
-                    <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Admin Page</h1>
-                    <div style={{ marginLeft: isOpen ? "70px" : "0px" }} className="bars">
-                        <FaBars onClick={toggle} />
+        <div className="flex h-screen">
+            {/* Sidebar */}
+            <div className={`fixed top-0 left-0 bottom-0 bg-gray-800 text-white transition-all duration-500 ease-in-out ${isOpen ? 'w-56' : 'w-24'} flex flex-col z-20`}>
+                <div className="flex items-center p-4 border-b border-gray-700">
+                    <h1 className={`text-2xl ml-2 ${isOpen ? 'block' : 'hidden'} text-green-400`}>Admin Page</h1>
+                    <div className={`ml-auto text-2xl cursor-pointer p-4 ${isOpen ? 'ml-16' : 'ml-0'} hover:bg-gray-700 rounded-full transition-colors duration-200`} onClick={toggle}>
+                        <FaBars />
                     </div>
                 </div>
-                {
-                    menuItem.map((item, index) => (
-                        <NavLink to={item.path} key={index} className="link">
-                            <div className="icon">{item.icon}</div>
-                            <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
-                        </NavLink>
-                    ))
-                }
+                {menuItem.map((item, index) => (
+                    <NavLink to={item.path} key={index} className="flex items-center text-white text-lg py-2 px-4 hover:bg-sky-300 hover:text-black transition-all duration-300 ease-in-out">
+                        <div className="text-2xl">{item.icon}</div>
+                        <div className={`ml-4 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
+                    </NavLink>
+                ))}
             </div>
-            <main>{children}</main>
+            {/* Main Content */}
+            <main>
+                {children}
+            </main>
         </div>
     );
 }
