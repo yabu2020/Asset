@@ -1,83 +1,81 @@
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 body {
-    margin: 0;
-    font-family:Arial, sans-serif; /* Ensure consistent font for the entire page */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Ensure consistent font for the entire page */
 }
 
 .container {
-    display: flex;
-     /* Full viewport height */
+  display: flex;
+  /* Full viewport height */
 }
 
 main {
-    flex: 1; /* Takes up remaining width */
-    padding: 20px;
-    border-radius: 8px; /* Optional: Rounded corners for main content */
-    
+  flex: 1; /* Takes up remaining width */
+  padding: 20px;
+  border-radius: 8px; /* Optional: Rounded corners for main content */
 }
 
 .sidebar {
-    background: #2F4050;
-    color: #fff;
-    width: 200px;
-    transition: all 0.5s;
-    position: fixed; /* Fixed position to stay on the left side */
-    left: 0; /* Align to the left edge of the viewport */
-    top: 0; /* Align to the top of the viewport */
-    bottom: 0; /* Expand to the bottom of the viewport */
-    z-index: 1000; /* Ensure sidebar is on top of other content */
-    display: flex;
-    flex-direction: column;
-  
+  background: #2f4050;
+  color: #fff;
+  width: 200px;
+  transition: all 0.5s;
+  position: fixed; /* Fixed position to stay on the left side */
+  left: 0; /* Align to the left edge of the viewport */
+  top: 0; /* Align to the top of the viewport */
+  bottom: 0; /* Expand to the bottom of the viewport */
+  z-index: 1000; /* Ensure sidebar is on top of other content */
+  display: flex;
+  flex-direction: column;
 }
 
 .top_section {
-    display: flex;
-    align-items: center;
-    padding: 20px 15px;
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
 }
 
 .logo {
-    font-size: 24px;
-    margin-left: 10px; /* Adjust margin for better alignment */
+  font-size: 24px;
+  margin-left: 10px; /* Adjust margin for better alignment */
 }
 
 .bars {
-    font-size: 25px;
-    margin-left: auto; /* Push to the right side */
-    cursor: pointer; /* Add cursor pointer for better UX */
-    padding-right: 15px; /* Add padding to align with sidebar top section */
+  font-size: 25px;
+  margin-left: auto; /* Push to the right side */
+  cursor: pointer; /* Add cursor pointer for better UX */
+  padding-right: 15px; /* Add padding to align with sidebar top section */
 }
 
 .link {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    gap: 15px;
-    transition: all 0.3s ease; /* Smoother transition */
+  display: flex;
+  align-items: center; /* Align items vertically */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.3s ease; /* Smoother transition */
 }
 
 .link:hover {
-    background: lightskyblue;
-    color: #000;
+  background: lightskyblue;
+  color: #000;
 }
 
 .active {
-    background: lightskyblue;
-    color: #000;
+  background: lightskyblue;
+  color: #000;
 }
 .icon,
 .link_text {
-    font-size: 20px;
+  font-size: 20px;
 }
 /* Hide text when sidebar is collapsed */
 .sidebar.open .link_text {
-    display: none;
+  display: none;
 }

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import './RegisterAsset.css'; // Import the CSS file
 
 function RegisterAsset() {
+  const [assetid, setAssetid] = useState('');
   const [name, setName] = useState('');
   const [assetno, setAssetno] = useState('');
   const [serialno, setSerialno] = useState('');
@@ -16,9 +17,10 @@ function RegisterAsset() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:3001/registerasset', { name,assetno, serialno, model, quantity, description, status })
+    axios.post('http://localhost:3001/registerasset', {assetid, name,assetno, serialno, model, quantity, description, status })
       .then(response => {
         setMessage(`Asset registered successfully: ${response.data.name}`);
+        setAssetid('');
         setName('');
         setAssetno('');
         setSerialno('');
@@ -36,6 +38,10 @@ function RegisterAsset() {
     <div className="register-container">
       <h2>Register Asset</h2>
       <form onSubmit={handleSubmit}>
+      <div>
+          <label>Asset Id:</label>
+          <input type="text" value={assetid} onChange={(e) => setAssetid(e.target.value)} required />
+        </div>
         <div>
           <label>Asset Name:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />

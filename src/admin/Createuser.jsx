@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import './Createuser.css'; // Import the updated CSS file
 
 function Createuser({ setUsers }) {
   const [role, setRole] = useState("user");
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [department, setDepartment] = useState("");
+  const [idError, setIdError] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [departmentError, setDepartmentError] = useState("");
   const [formError, setFormError] = useState(""); // New state for general form errors
 
   const validateEmail = (email) => {
@@ -19,18 +22,23 @@ function Createuser({ setUsers }) {
   };
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     return re.test(password);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIdError("");
     setNameError("");
     setEmailError("");
     setPasswordError("");
+    setDepartmentError("");
     setFormError(""); // Clear general form error
 
+    if (!id) {
+      setIdError("Id is required");
+      return;
+    }
     if (!name) {
       setNameError("Name is required");
       return;
@@ -48,18 +56,24 @@ function Createuser({ setUsers }) {
       return;
     }
     if (!validatePassword(password)) {
-      setPasswordError("Password must be at least 6 characters and include both letters and numbers");
+      setPasswordError("Password must be at least 6 characters long and include letters, numbers, and special characters");
+      return;
+    }
+    if (!department) {
+      setDepartmentError("Department is required");
       return;
     }
 
     axios
-      .post("http://localhost:3001/adduser", { role, name, email, password })
+      .post("http://localhost:3001/adduser", { role, id, name, email, password, department })
       .then((result) => {
         setUsers(prevUsers => [...prevUsers, result.data]);
         alert("User added successfully!");
+        setId("");
         setName("");
         setEmail("");
         setPassword("");
+        setDepartment("");
       })
       .catch((err) => {
         if (err.response && err.response.data && err.response.data.error) {
@@ -77,6 +91,18 @@ function Createuser({ setUsers }) {
         <form onSubmit={handleSubmit}>
           <h2>Create User</h2>
           {formError && <p className="form-error">{formError}</p>} {/* Display general form error */}
+        
+          <div className="form-group">
+            <label htmlFor="id"><strong>Id</strong></label>
+            <input
+              type="text"
+              placeholder="Enter Id"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              className={`form-control ${idError ? 'error' : ''}`}
+            />
+            {idError && <p className="error-message">{idError}</p>}
+          </div>
           <div className="form-group">
             <label htmlFor="name"><strong>Name</strong></label>
             <input
@@ -111,6 +137,17 @@ function Createuser({ setUsers }) {
             {passwordError && <p className="error-message">{passwordError}</p>}
           </div>
           <div className="form-group">
+            <label htmlFor="department"><strong>Department</strong></label>
+            <input
+              type="text"
+              placeholder="Enter Department"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              className={`form-control ${departmentError ? 'error' : ''}`}
+            />
+            {departmentError && <p className="error-message">{departmentError}</p>}
+          </div>
+          <div className="form-group">
             <label htmlFor="role"><strong>Role</strong></label>
             <select value={role} onChange={(e) => setRole(e.target.value)} className="form-control">
               <option value="user">User</option>
@@ -121,8 +158,6 @@ function Createuser({ setUsers }) {
           </div>
           <button type="submit" className="submit-button">Add User</button>
         </form>
-
-        
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import './AssetToUser.css'; // Import the CSS file for styling
 
 function AssetToUser() {
@@ -12,54 +11,48 @@ function AssetToUser() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Fetch assets and users when component mounts
-    axios.get('http://localhost:3001/assets')
-      .then(response => {
-        setAssets(response.data);
-      })
-      .catch(error => {
-        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
-      });
+    const fetchData = async () => {
+      try {
+        const [assetsResponse, usersResponse, assignedAssetsResponse] = await Promise.all([
+          axios.get('http://localhost:3001/assets'),
+          axios.get('http://localhost:3001/users'),
+          axios.get('http://localhost:3001/assigned-assets')
+        ]);
 
-    axios.get('http://localhost:3001/users')
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
+        setAssets(assetsResponse.data);
+        setUsers(usersResponse.data);
+        setAssignedAssets(assignedAssetsResponse.data);
+      } catch (error) {
         setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
-      });
+      }
+    };
 
-    axios.get('http://localhost:3001/assigned-assets')
-      .then(response => {
-        setAssignedAssets(response.data);
-      })
-      .catch(error => {
-        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
-      });
-  }, []);
+    fetchData();
+  }, []); // Empty dependency array means this runs once when component mounts
 
   const handleGiveAsset = () => {
     if (!selectedAsset || !selectedUser) {
       setMessage('Please select an asset and a user.');
       return;
     }
-
-    axios.post('http://localhost:3001/giveasset', { assetId: selectedAsset, userEmail: selectedUser })
+  
+    axios.post('http://localhost:3001/giveasset', { assetId: selectedAsset, userId: selectedUser })
       .then(response => {
         setMessage('Asset given to user successfully');
-        // Update assigned assets table
         setAssignedAssets(prev => [...prev, response.data]);
-        // Clear selections
         setSelectedAsset('');
         setSelectedUser('');
       })
       .catch(error => {
-        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
+        const errorMsg = error.response ? error.response.data.error : error.message;
+        setMessage(`Error: ${errorMsg}`);
       });
   };
-
+  
+  console.log(selectedAsset);
   return (
     <div className="asset-to-user-container">
+      
       <h2>Assign Asset to User</h2>
       {message && <p className="message">{message}</p>}
 
@@ -72,8 +65,8 @@ function AssetToUser() {
         >
           <option value="" disabled>Select an Asset</option>
           {assets.map((asset) => (
-            <option key={asset._id} value={asset._id}>
-              {asset.serialno} - {asset.name}
+            <option key={asset.assetid} value={asset.assetid}>
+              {asset.serialno} - {asset.name} (Qty: {asset.quantity})
             </option>
           ))}
         </select>
@@ -88,7 +81,7 @@ function AssetToUser() {
         >
           <option value="" disabled>Select a User</option>
           {users.map((user) => (
-            <option key={user.email} value={user.email}>
+            <option key={user._id} value={user._id}>
               {user.email}
             </option>
           ))}
@@ -104,6 +97,8 @@ function AssetToUser() {
             <th>Asset Name</th>
             <th>Asset SerialNo</th>
             <th>Assigned To</th>
+            <th>User Department</th>
+            <th>Date Assigned</th>
           </tr>
         </thead>
         <tbody>
@@ -111,19 +106,17 @@ function AssetToUser() {
             <tr key={index}>
               <td>{assignment.asset.name}</td>
               <td>{assignment.asset.serialno}</td>
-              <td>{assignment.user.email}</td>
+              <td>{assignment.user.name}</td>
+              <td>{assignment.user.department}</td>
+              <td>{new Date(assignment.dateAssigned).toLocaleDateString()}</td>
             </tr>
           )) : (
             <tr>
-              <td colSpan="3">No assets assigned</td>
+              <td colSpan="5">No assets assigned</td>
             </tr>
           )}
         </tbody>
       </table>
-
-      <p>
-        <Link to="/">Sign Out</Link>
-      </p>
     </div>
   );
 }

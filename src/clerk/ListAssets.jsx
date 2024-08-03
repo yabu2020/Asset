@@ -22,6 +22,7 @@ function ListAssets() {
   const startEditing = (asset) => {
     setEditingAsset(asset._id);
     setEditData({
+      assetid: asset.assetid,
       name: asset.name,
       assetno: asset.assetno,
       serialno: asset.serialno,
@@ -62,6 +63,7 @@ function ListAssets() {
       <table className="assets-table">
         <thead>
           <tr>
+            <th>Asset Id</th>
             <th>Name</th>
             <th>Asset Number</th>
             <th>SerialNo</th>
@@ -75,6 +77,18 @@ function ListAssets() {
         <tbody>
           {assets.length > 0 ? assets.map((asset) => (
             <tr key={asset._id}>
+                <td>
+                {editingAsset === asset.assetid ? (
+                  <input
+                    type="text"
+                    name="assetid"
+                    value={editData.assetid}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  asset.assetid
+                )}
+              </td>
               <td>
                 {editingAsset === asset._id ? (
                   <input

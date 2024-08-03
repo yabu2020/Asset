@@ -1,70 +1,66 @@
-/* Style for the background of the entire page */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
+Style for the background of the entire page .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-
 
 /* Style for the login box */
 .login-box {
-    background-color: #0e0f13; /* Dark blue-black background */
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(12, 11, 11, 0.3); /* Darker shadow for better contrast */
-    text-align: center;
+  background-color: #0e0f13; /* Dark blue-black background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(12, 11, 11, 0.3); /* Darker shadow for better contrast */
+  text-align: center;
 }
 
 /* Heading style */
 .login-box h2 {
-    color: #e0e0e0; /* Light gray color for better readability */
-    text-align: center;
-    margin-bottom: 20px;
+  color: #e0e0e0; /* Light gray color for better readability */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* Label style */
 .login-box label {
-    color: #b0b0b0; /* Light gray color for labels */
-    font-weight: bold;
+  color: #b0b0b0; /* Light gray color for labels */
+  font-weight: bold;
 }
 
 /* Input fields style */
 .login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #63a9ac; /* Darker border color */
-    border-radius: 4px;
-    background-color: #3e4d49; /* Dark background for input fields */
-    color: #f8efef; /* Light text color */
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #63a9ac; /* Darker border color */
+  border-radius: 4px;
+  background-color: #3e4d49; /* Dark background for input fields */
+  color: #f8efef; /* Light text color */
 }
 
 /* Button style */
 .login-box button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff; /* Blue color for button */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Blue color for button */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .login-box button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; /* Darker blue on hover */
 }
 .forgot-password-link {
-    color: #007bff; /* Change to your preferred color */
-    cursor: pointer;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .forgot-password-link:hover {
-    text-decoration: underline;
-  }
-  
+  color: #007bff; /* Change to your preferred color */
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
