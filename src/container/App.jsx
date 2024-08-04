@@ -15,7 +15,8 @@ import ClerkSidebar from '../clerk/ClerkSidebar';
 import RegisterAsset from '../clerk/RegisterAsset'; 
 import AssetToUser from '../clerk/AssetToUser';
 import ListAssets from '../clerk/ListAssets'; // Import the new component
-
+import TransferAsset from "../clerk/TransferAsset";
+import ViewAsset from '../clerk/ViewAsset';
 
 function App() {
   const [cUSer, setCuser] = useState({});
@@ -44,7 +45,9 @@ function App() {
           <Route path="/clerk" element={<ClerkSidebar />} />
           <Route path="/registerasset" element={<RegisterAsset />} />
           <Route path="/assettouser" element={<AssetToUser />} />
+          <Route path="/transferasset" element={<TransferAsset />} />
           <Route path="/assets" element={<ListAssets />} /> 
+          <Route path="/ViewAsset" element={<ViewAsset />} />
           <Route path="/userpage" element={<Userpage cUSer={cUSer} />} />
           <Route path="/approver" element={<Approver cUSer={cUSer} />} />
           <Route path="*" element={<Navigate to="/" />} />

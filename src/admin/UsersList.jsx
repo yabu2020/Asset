@@ -61,13 +61,13 @@ function UsersList() {
           <div className="rounded-t mb-0 px-4 py-3 border-0">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 className="font-semibold text-base text-blueGray-700">
+                <h3 className="font-semibold bg-gray-50 text-base text-blueGray-700">
                   List of Users
                 </h3>
               </div>
               <div className="flex-grow self-end text-right">
                 <Link to="/adduser">
-                  <button className="bg-sky-500 w-28 h-11 justify-around hover:text-white items-center hover:bg-sky-700">
+                  <button className="bg-green-500 w-28 h-11 justify-around hover:text-white items-center hover:bg-sky-700">
                     New User
                   </button>
                 </Link>

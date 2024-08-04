@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ListAssets.css'; // Import the CSS file for styling
+/*import './ListAssets.css'; // Import the CSS file for styling*/
 
 function ListAssets() {
   const [assets, setAssets] = useState([]);
@@ -22,7 +22,6 @@ function ListAssets() {
   const startEditing = (asset) => {
     setEditingAsset(asset._id);
     setEditData({
-      assetid: asset.assetid,
       name: asset.name,
       assetno: asset.assetno,
       serialno: asset.serialno,
@@ -57,39 +56,32 @@ function ListAssets() {
   };
 
   return (
-    <div className="assets-container">
-      <h2>List of Assets</h2>
-      {message && <p className="message">{message}</p>}
-      <table className="assets-table">
-        <thead>
-          <tr>
-            <th>Asset Id</th>
-            <th>Name</th>
-            <th>Asset Number</th>
-            <th>SerialNo</th>
-            <th>Model</th>
-            <th>Quantity</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Actions</th>
+    <div class="grid grid-cols-1 ml-12 lg:grid-cols-1 gap-6 w-screen">
+    <div class="bg-white border border-gray-100 shadow-md shadow-black/10 p-6 rounded-md w-full">
+        <div class="flex justify-between w-full">
+            <div>
+                <h1 class="font-semibold bg-gray-50 text-lg">List of Assets</h1>
+            </div>
+    {message && <p className="text-gray-300 text-md font-medium hover:text-green-500 ml-2">{message}</p>}
+     </div>
+     <div class="overflow-x-auto">
+    <table className="w-full flex-grow min-w-[540px]">
+      <thead>
+        <tr>
+            <th class="text-[15px] uppercase border border-solid tracking-wide font-semibold  text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Name</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Asset Number</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">SerialNo</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Model</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Quantity</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Description</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Status</th>
+            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Actions</th>
           </tr>
         </thead>
         <tbody>
           {assets.length > 0 ? assets.map((asset) => (
             <tr key={asset._id}>
-                <td>
-                {editingAsset === asset.assetid ? (
-                  <input
-                    type="text"
-                    name="assetid"
-                    value={editData.assetid}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  asset.assetid
-                )}
-              </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -101,8 +93,8 @@ function ListAssets() {
                   asset.name
                 )}
               </td>
-              <td>
-                {editingAsset === asset._id ? (
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              {editingAsset === asset._id ? (
                   <input
                     type="text"
                     name="assetno"
@@ -113,7 +105,7 @@ function ListAssets() {
                   asset.assetno
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -125,7 +117,7 @@ function ListAssets() {
                   asset.serialno
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -137,7 +129,7 @@ function ListAssets() {
                   asset.model
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="number"
@@ -149,7 +141,7 @@ function ListAssets() {
                   asset.quantity
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -161,7 +153,7 @@ function ListAssets() {
                   asset.description
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -173,14 +165,14 @@ function ListAssets() {
                   asset.status
                 )}
               </td>
-              <td>
+              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <>
-                    <button onClick={() => saveChanges(asset._id)} className="save-button">Save</button>
-                    <button onClick={cancelEditing} className="cancel-button">Cancel</button>
+                    <button onClick={() => saveChanges(asset._id)} className="hover:bg-gray-500 bg-green-50 text-green-400">Save</button>
+                    <button onClick={cancelEditing} className="hover:bg-gray-500 bg-green-50 text-green-400">Cancel</button>
                   </>
                 ) : (
-                  <button onClick={() => startEditing(asset)} className="edit-button">Edit</button>
+                  <button onClick={() => startEditing(asset)} className="hover:bg-gray-500 bg-green-50 text-green-400">Edit</button>
                 )}
               </td>
             </tr>
@@ -191,6 +183,8 @@ function ListAssets() {
           )}
         </tbody>
       </table>
+      </div>
+      </div>
     </div>
   );
 }

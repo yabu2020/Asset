@@ -130,6 +130,7 @@ function AssetToUser() {
             <th>Assigned To</th>
             <th>Name</th>
             <th>Department</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -141,6 +142,7 @@ function AssetToUser() {
                 <td>{assignment.user.email}</td>
                 <td className="capitalize">{assignment.user.name}</td>
                 <td className="capitalize flex justify-center">{assignment.user.department}</td>
+                <td>{assignment.dateAssigned}</td>
               </tr>
             ))
           ) : (

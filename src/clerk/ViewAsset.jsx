@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Viewasset() {
+function ViewAsset() {
   return (
     <div>
       welcome 
@@ -12,4 +12,4 @@ function Viewasset() {
   );
 }
 
-export default Viewasset;
+export default ViewAsset;
