@@ -21,6 +21,7 @@ import ViewAsset from '../clerk/ViewAsset';
 function App() {
   const [cUSer, setCuser] = useState({});
   const [users, setUsers] = useState([]);
+  
   const renderSidebar = () => {
     if (cUSer.role === 'Admin') {
       return <AdminSidebar />;
@@ -35,7 +36,7 @@ function App() {
       {renderSidebar()}
       <div className="main-content">
         <Routes>
-          <Route path="/" element={<Login setCuser={setCuser} />} />
+          <Route path="/" element={<Login setCuser={setCuser} />} />  
           <Route path="/reset-password" element={<Reset />} />
           <Route path="/admin" element={<AdminSidebar cUSer={cUSer} />} />
           <Route path="/users" element={<UsersList users={users} />} />
@@ -48,7 +49,7 @@ function App() {
           <Route path="/transferasset" element={<TransferAsset />} />
           <Route path="/assets" element={<ListAssets />} /> 
           <Route path="/ViewAsset" element={<ViewAsset />} />
-          <Route path="/userpage" element={<Userpage cUSer={cUSer} />} />
+          <Route path="/userpage/:userId" element={<Userpage />} />
           <Route path="/approver" element={<Approver cUSer={cUSer} />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

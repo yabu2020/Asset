@@ -1,37 +1,32 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-//import './UserPage.css'; // Import CSS file for styling
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom'; // Import useParams
+import './Userpage.css'; // Import the CSS file for styling
 
 function UserPage() {
+  const { userId } = useParams(); // Get userId from route parameters
   const [assignedAssets, setAssignedAssets] = useState([]);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Fetch assigned assets for the logged-in user
+    if (userId) {
+      fetchAssignedAssets(userId);
+    }
+  }, [userId]);
+
+  const fetchAssignedAssets = (userId) => {
+    console.log('Fetching assets for user ID:', userId);
     axios
-      .get("http://localhost:3001/user-assigned-assets", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      })
-      .then((response) => {
-        setAssignedAssets(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching assigned assets:", error);
-        setMessage(
-          `Error: ${
-            error.response ? error.response.data.error : error.message
-          }`
-        );
-      });
-  }, []);
+      .get(`http://localhost:3001/assigned-assets/${userId}`)
+      .then((response) => setAssignedAssets(response.data))
+      .catch((error) => setMessage(`Error: ${error.message}`));
+  };
 
   return (
     <div className="user-page-container">
       <h2>Your Assigned Assets</h2>
       {message && <p className="message">{message}</p>}
-
       <table className="assigned-assets-table">
         <thead>
           <tr>
@@ -46,7 +41,7 @@ function UserPage() {
               <tr key={index}>
                 <td>{assignment.asset.name}</td>
                 <td>{assignment.asset.serialno}</td>
-                <td>{assignment.dateAssigned}</td>
+                <td>{new Date(assignment.dateAssigned).toLocaleDateString()}</td>
               </tr>
             ))
           ) : (

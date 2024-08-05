@@ -1,0 +1,29 @@
+/* UserPage.css */
+.user-page-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .message {
+    color: red;
+  }
+  
+  .assigned-assets-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .assigned-assets-table th,
+  .assigned-assets-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .assigned-assets-table th {
+    background-color: #f4f4f4;
+  }
+  

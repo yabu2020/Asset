@@ -44,7 +44,7 @@ function Login({ setCuser }) {
               navigate("/admin"); // Redirect admin to dashboard
               break;
             case "user":
-              navigate("/userpage"); // Redirect user to user page
+              navigate(`/userpage/${userData._id}`); // Redirect user to user page 
               break;
             case "Clerk":
               navigate("/clerk"); // Redirect clerk to clerk page
@@ -153,4 +153,4 @@ function Login({ setCuser }) {
   );
 }
 
-export default Login;
+ export default Login;
