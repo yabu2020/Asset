@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaUserAlt, FaCommentAlt, FaEye } from "react-icons/fa";
 
-
 function Sidebar({ children }) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -31,7 +30,7 @@ function Sidebar({ children }) {
     ];
 
     return (
-        <div className="flex h-screen">
+        <div className="flex">
             {/* Sidebar */}
             <div className={`fixed top-0 left-0 bottom-0 bg-gray-800 text-white transition-all duration-500 ease-in-out ${isOpen ? 'w-56' : 'w-24'} flex flex-col z-20`}>
                 <div className="flex items-center p-4 border-b border-gray-700">
@@ -40,15 +39,17 @@ function Sidebar({ children }) {
                         <FaBars />
                     </div>
                 </div>
-                {menuItem.map((item, index) => (
-                    <NavLink to={item.path} key={index} className="flex items-center text-white text-lg py-2 px-4 hover:bg-sky-300 hover:text-black transition-all duration-300 ease-in-out">
-                        <div className="text-2xl">{item.icon}</div>
-                        <div className={`ml-4 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
-                    </NavLink>
-                ))}
+                <div className="flex-grow overflow-y-auto">
+                    {menuItem.map((item, index) => (
+                        <NavLink to={item.path} key={index} className="flex items-center text-white text-lg py-2 px-4 hover:bg-sky-300 hover:text-black transition-all duration-300 ease-in-out">
+                            <div className="text-2xl">{item.icon}</div>
+                            <div className={`ml-4 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
+                        </NavLink>
+                    ))}
+                </div>
             </div>
             {/* Main Content */}
-            <main>
+            <main className="flex-1">
                 {children}
             </main>
         </div>

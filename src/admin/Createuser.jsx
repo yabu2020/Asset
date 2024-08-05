@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Createuser.css'; // Import the updated CSS file
-
+import ggImage from './gg.jpg';
 function Createuser({ setUsers }) {
   const [role, setRole] = useState("user");
   const [id, setId] = useState("");
@@ -57,7 +56,6 @@ function Createuser({ setUsers }) {
       setPasswordError("Password must be at least 6 characters long and include letters, numbers, and special characters");
       return;
     }
-   
 
     axios
       .post("http://localhost:3001/adduser", { role, id, name, email, password, department })
@@ -81,86 +79,91 @@ function Createuser({ setUsers }) {
   };
 
   return (
-    <div className="admin-container">
-      <div className="form-container">
+    <div className="flex items-center justify-center min-h-screen" style={{
+      backgroundImage: `url(${ggImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}>
+      <div className="w-full max-w-md rounded-lg shadow-lg p-8 ">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-600">Create User</h2>
+        {formError && <p className="text-red-500 mb-4">{formError}</p>}
         <form onSubmit={handleSubmit}>
-          <h2>Create User</h2>
-          {formError && <p className="form-error">{formError}</p>} {/* Display general form error */}
-        
-          <div className="form-group">
-            <label htmlFor="id"><strong>Id</strong></label>
-            <input
-              type="text"
-              placeholder="Enter Id"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              className={`form-control ${idError ? 'error' : ''}`}
+        <div className="mb-4">
+          <label htmlFor="id" className="block font-bold mb-2 text-gray-600">ID</label>
+          <input
+            type="text"
+            placeholder="Enter Id"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
             />
-            {idError && <p className="error-message">{idError}</p>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="name"><strong>Name</strong></label>
+          {idError && <p className="text-red-500 text-sm mt-1">{idError}</p>}
+        </div>
+          <div className="mb-4">
+            <label className="block font-bold mb-2 text-gray-600" htmlFor="name">Name</label>
             <input
               type="text"
               placeholder="Enter Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`form-control ${nameError ? 'error' : ''}`}
+              className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
             />
-            {nameError && <p className="error-message">{nameError}</p>}
+            {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
           </div>
-          <div className="form-group">
-            <label htmlFor="email"><strong>Email</strong></label>
+          <div className="mb-4">
+            <label className="block font-bold mb-2 text-gray-600" htmlFor="email">Email</label>
             <input
               type="email"
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`form-control ${emailError ? 'error' : ''}`}
+              className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${emailError ? 'border-red-500' : ''}`}
             />
-            {emailError && <p className="error-message">{emailError}</p>}
+            {emailError && <p className="text-red-500 mt-2">{emailError}</p>}
           </div>
-          <div className="form-group">
-            <label htmlFor="password"><strong>Password</strong></label>
+          <div className="mb-4">
+            <label className="block font-bold mb-2 text-gray-600" htmlFor="password">Password</label>
             <input
               type="password"
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`form-control ${passwordError ? 'error' : ''}`}
+              className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-2 border-gray-300 ${passwordError ? 'border-red-500' : ''}`}
             />
-            {passwordError && <p className="error-message">{passwordError}</p>}
+            {passwordError && <p className="text-red-500 mt-2">{passwordError}</p>}
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="department"><strong>Department</strong></label>
-            <input
-              type="text"
-              placeholder="Enter Department"
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              className={`form-control ${departmentError ? 'error' : ''}`}
-            />
-            {departmentError && <p className="error-message">{departmentError}</p>}
-          </div> */}
-          <div className="form-group">
-            <label htmlFor="department"><strong>Department</strong></label>
-            <select value={department} onChange={(e) => setDepartment(e.target.value)} className="form-control">
-              <option value="CS">CS</option>
-              <option value="IT">IT</option>
-              <option value="IS">IS</option>
-              <option value="ES">ES</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="role"><strong>Role</strong></label>
-            <select value={role} onChange={(e) => setRole(e.target.value)} className="form-control">
+          <div className="mb-4">
+          <label htmlFor="department" className="block text-sm font-medium text-gray-700">Department</label>
+          <select
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
+            className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
+            >
+            <option value="CS">CS</option>
+            <option value="IT">IT</option>
+            <option value="IS">IS</option>
+            <option value="ES">ES</option>
+          </select>
+        </div>
+          <div className="mb-4">
+            <label className="block font-bold mb-2 text-gray-600" htmlFor="role">Role</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-2 border-gray-300"
+            >
               <option value="user">User</option>
               <option value="Admin">Admin</option>
               <option value="Clerk">Clerk</option>
               <option value="asset approver">Asset Approver</option>
             </select>
           </div>
-          <button type="submit" className="submit-button">Add User</button>
+          <button
+            type="submit"
+            className="w-full bg-gray-300 hover:bg-green-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-green-200"
+          >
+            Add User
+          </button>
         </form>
       </div>
     </div>

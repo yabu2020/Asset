@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Resetpassword.css'; // Import the CSS file for styling
+import rrImage from './rr.jpg';
 
 function Resetpassword() {
   const [resetEmail, setResetEmail] = useState("");
@@ -16,17 +16,13 @@ function Resetpassword() {
   };
 
   const validatePassword = (password) => {
-    // Check password length
     if (password.length < 6) {
       return "Password must be at least 6 characters long";
     }
-    
-    // Check password complexity
     const complexityRe = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     if (!complexityRe.test(password)) {
       return "Password must contain at least one letter, one number, and one special character";
     }
-
     return null;
   };
 
@@ -77,44 +73,52 @@ function Resetpassword() {
   };
 
   return (
-    <div className="reset-password-container">
-      <form onSubmit={handlePasswordReset} className="reset-password-form">
-        <h2>Reset Password</h2>
-        <div className="form-group">
-          <label htmlFor="resetEmail"><strong>Email</strong></label>
+    <div className="flex items-center min-h-screen bg-cover "
+    style={{
+      backgroundImage: `url(${rrImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}>
+
+    <div className="flex flex-col items-center p-8"  bg-white bg-cover style={{ maxWidth: "10,000px", marginLeft: "320px" }}>
+      <form onSubmit={handlePasswordReset} className="w-full">
+        <h2 className="text-2xl text-center font-bold text-white mb-6">Reset Password</h2>
+        <div className="mb-4">
+          <label className="block text-white" htmlFor="resetEmail">Email</label>
           <input
             type="email"
             placeholder="Enter Email"
             value={resetEmail}
             onChange={(e) => setResetEmail(e.target.value)}
-            className={`form-control ${resetEmailError ? 'error' : ''}`}
+            className={`w-full px-3 py-2 text-white  rounded bg-gray-700 focus:outline-none focus:ring focus:ring-blue-200 ${resetEmailError ? 'border-red-500' : ''}`}
           />
-          {resetEmailError && <p className="error-message">{resetEmailError}</p>}
+          {resetEmailError && <p className="text-red-500 mt-2">{resetEmailError}</p>}
         </div>
-        <div className="form-group">
-          <label htmlFor="newPassword"><strong>New Password</strong></label>
+        <div className="mb-4">
+          <label className="block text-white" htmlFor="newPassword">New Password</label>
           <input
             type="password"
             placeholder="Enter New Password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className={`form-control ${passwordError ? 'error' : ''}`}
+            className={`w-full px-3 py-2 rounded text-white  bg-dark focus:outline-none focus:ring focus:ring-blue-200 ${passwordError ? 'border-red-500' : ''}`}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword"><strong>Confirm Password</strong></label>
+        <div className="mb-4">
+          <label className="block text-white" htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className={`form-control ${passwordError ? 'error' : ''}`}
+            className={`w-full px-3 py-2 rounded text-white bg-dark focus:outline-none focus:ring focus:ring-blue-200 ${passwordError ? 'border-red-500' : ''}`}
           />
         </div>
-        <button type="submit" className="submit-button">Reset Password</button>
-        {passwordError && <p className="error-message">{passwordError}</p>}
-        {resetMessage && <p className="success-message">{resetMessage}</p>}
+        <button type="submit" className="w-full bg-blue-700 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-200">Reset Password</button>
+        {passwordError && <p className="text-red-500 mt-2">{passwordError}</p>}
+        {resetMessage && <p className="text-blue-500 mt-2">{resetMessage}</p>}
       </form>
+    </div>
     </div>
   );
 }
