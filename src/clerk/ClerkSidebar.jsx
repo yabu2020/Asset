@@ -59,7 +59,7 @@ function ClerkSidebar({ children }) {
                                 to={item.path}
                                 key={index}
                                 className="flex items-center text-white text-base py-3 px-6 hover:bg-gray-700 hover:text-green-400 transition-colors duration-200"
-                                activeClassName="bg-gray-600 text-green-400"
+                                // activeClassName="bg-gray-600 text-green-400"
                             >
                                 <div className="text-xl">{item.icon}</div>
                                 <div className={`${isOpen ? 'block' : 'hidden'} ml-4 font-medium`}>{item.name}</div>

@@ -144,7 +144,7 @@ function Createuser({ setUsers }) {
           </div> */}
           <div className="form-group">
             <label htmlFor="department"><strong>Department</strong></label>
-            <select value={department} onChange={(e) => setDepartment(e.target.value)} className="form-group">
+            <select value={department} onChange={(e) => setDepartment(e.target.value)} className="form-control">
               <option value="CS">CS</option>
               <option value="IT">IT</option>
               <option value="IS">IS</option>
