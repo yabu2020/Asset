@@ -13,7 +13,6 @@ function Createuser({ setUsers }) {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [departmentError, setDepartmentError] = useState("");
   const [formError, setFormError] = useState(""); // New state for general form errors
 
   const validateEmail = (email) => {
@@ -32,7 +31,6 @@ function Createuser({ setUsers }) {
     setNameError("");
     setEmailError("");
     setPasswordError("");
-    setDepartmentError("");
     setFormError(""); // Clear general form error
 
     if (!id) {
@@ -59,10 +57,7 @@ function Createuser({ setUsers }) {
       setPasswordError("Password must be at least 6 characters long and include letters, numbers, and special characters");
       return;
     }
-    if (!department) {
-      setDepartmentError("Department is required");
-      return;
-    }
+   
 
     axios
       .post("http://localhost:3001/adduser", { role, id, name, email, password, department })
@@ -136,7 +131,7 @@ function Createuser({ setUsers }) {
             />
             {passwordError && <p className="error-message">{passwordError}</p>}
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="department"><strong>Department</strong></label>
             <input
               type="text"
@@ -146,6 +141,15 @@ function Createuser({ setUsers }) {
               className={`form-control ${departmentError ? 'error' : ''}`}
             />
             {departmentError && <p className="error-message">{departmentError}</p>}
+          </div> */}
+          <div className="form-group">
+            <label htmlFor="department"><strong>Department</strong></label>
+            <select value={department} onChange={(e) => setDepartment(e.target.value)} className="form-group">
+              <option value="CS">CS</option>
+              <option value="IT">IT</option>
+              <option value="IS">IS</option>
+              <option value="ES">ES</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="role"><strong>Role</strong></label>
