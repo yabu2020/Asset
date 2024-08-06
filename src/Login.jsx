@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './Login.css'; // Import the updated CSS file if needed
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
 
 function Login({ setCuser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [tooltip, setTooltip] = useState(""); // State for tooltip text
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -89,7 +91,7 @@ function Login({ setCuser }) {
   };
 
   return (
-    <div className="bg-white-100 min-h-screen flex flex-col items-center">
+    <div className="bg-white min-h-screen flex flex-col items-center">
       {/* Image Container */}
       <div className="w-full bg-gray-300">
         <img 
@@ -99,7 +101,7 @@ function Login({ setCuser }) {
         />
       </div>
       {/* Login Form Container */}
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg -mt-8"> {/* Adjust the negative margin here */}
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg -mt-8 relative">
         <h1 className="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">
           Login to Your Account
         </h1>
@@ -120,20 +122,41 @@ function Login({ setCuser }) {
             />
             {emailError && <p className="text-red-500">{emailError}</p>}
           </div>
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <label htmlFor="password" className="block mb-2 text-sm text-gray-600">
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"} // Toggle input type
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 pr-12"
+                required
+              />
+              {/* Eye Icon */}
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                onMouseEnter={() => setTooltip(showPassword ? "Hide Password" : "Show Password")}
+                onMouseLeave={() => setTooltip("")}
+                className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                style={{ height: '100%' }} // Ensure the icon container takes full height
+              >
+                {showPassword ? (
+                  <FaEyeSlash className="w-5 h-5 text-gray-500" />
+                ) : (
+                  <FaEye className="w-5 h-5 text-gray-500" />
+                )}
+              </div>
+              {tooltip && (
+                <div className="absolute top-full right-0 mt-1 bg-gray-700 text-white text-xs rounded py-1 px-2">
+                  {tooltip}
+                </div>
+              )}
+            </div>
             {passwordError && <p className="text-red-500">{passwordError}</p>}
           </div>
           <button
@@ -153,4 +176,4 @@ function Login({ setCuser }) {
   );
 }
 
- export default Login;
+export default Login;

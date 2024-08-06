@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams, Link } from 'react-router-dom'; // Import useParams and Link
 import './Userpage.css'; // Import the CSS file for styling
 
 function UserPage() {
@@ -51,6 +50,14 @@ function UserPage() {
           )}
         </tbody>
       </table>
+
+      <div className="link-section">
+        <h3>Manage Your Security Question</h3>
+        
+        <Link to={`/security-question/${userId}`} className="manage-security-question-link">
+          Go to Security Question Page
+        </Link>
+      </div>
     </div>
   );
 }

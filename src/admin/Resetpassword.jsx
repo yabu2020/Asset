@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
 import rrImage from './rr.jpg';
 
 function Resetpassword() {
