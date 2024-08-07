@@ -15,7 +15,7 @@ function UserPage() {
   }, [userId]);
 
   const fetchAssignedAssets = (userId) => {
-    console.log('Fetching assets for user ID:', userId);
+    console.log('Fetching assets for user ID:', userId); // Log userId to verify
     axios
       .get(`http://localhost:3001/assigned-assets/${userId}`)
       .then((response) => setAssignedAssets(response.data))
@@ -38,9 +38,9 @@ function UserPage() {
           {assignedAssets.length > 0 ? (
             assignedAssets.map((assignment, index) => (
               <tr key={index}>
-                <td>{assignment.asset.name}</td>
-                <td>{assignment.asset.serialno}</td>
-                <td>{new Date(assignment.dateAssigned).toLocaleDateString()}</td>
+                <td>{assignment.asset?.name || 'N/A'}</td>
+                <td>{assignment.asset?.serialno || 'N/A'}</td>
+                <td>{new Date(assignment.dateAssigned).toLocaleDateString() || 'N/A'}</td>
               </tr>
             ))
           ) : (
@@ -53,7 +53,6 @@ function UserPage() {
 
       <div className="link-section">
         <h3>Manage Your Security Question</h3>
-        
         <Link to={`/security-question/${userId}`} className="manage-security-question-link">
           Go to Security Question Page
         </Link>
