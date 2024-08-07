@@ -39,6 +39,10 @@ function ClerkSidebar({ children }) {
             name: "View Asset",
             icon: <FaEye />
         },
+        {
+            path: "/",
+            name: "Sign Out",
+        },
     ];
 
     return (

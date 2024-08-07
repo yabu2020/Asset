@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-//import { NavLink } from 'react-router-dom';
 import './TransferAsset.css'; // Import the CSS file for styling
 
 function TransferAsset() {
@@ -11,50 +10,37 @@ function TransferAsset() {
   const [fromUser, setFromUser] = useState("");
   const [toUser, setToUser] = useState("");
   const [message, setMessage] = useState("");
-  
 
   useEffect(() => {
     // Fetch assets and users when component mounts
     axios
-    .get("http://localhost:3001/assets")
-    .then((response) => {
-      setAssets(response.data);
-    })
-    .catch((error) => {
-      setMessage(
-        `Error: ${
-          error.response ? error.response.data.message : error.message
-        }`
-      );
-    });
+      .get("http://localhost:3001/assets")
+      .then((response) => {
+        setAssets(response.data);
+      })
+      .catch((error) => {
+        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
+      });
 
-  axios
-    .get("http://localhost:3001/users")
-    .then((response) => {
-      setUsers(response.data);
-    })
-    .catch((error) => {
-      setMessage(
-        `Error: ${
-          error.response ? error.response.data.message : error.message
-        }`
-      );
-    });
+    axios
+      .get("http://localhost:3001/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
+      });
 
     // Fetch transfer history
     axios
-    .get("http://localhost:3001/transfer-history")
-    .then((response) => {
-      setTransferHistory(response.data);
-    })
-    .catch((error) => {
-      setMessage(
-        `Error: ${
-          error.response ? error.response.data.message : error.message
-        }`
-      );
-    });
-}, []);
+      .get("http://localhost:3001/transfer-history")
+      .then((response) => {
+        setTransferHistory(response.data);
+      })
+      .catch((error) => {
+        setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
+      });
+  }, []);
 
   const handleTransferAsset = () => {
     if (!selectedAsset || !fromUser || !toUser) {
@@ -67,7 +53,6 @@ function TransferAsset() {
       fromUserId: fromUser,
       toUserId: toUser
     })
-    
       .then(response => {
         setMessage("Asset transferred successfully");
         // Update transfer history table
@@ -82,6 +67,7 @@ function TransferAsset() {
         setMessage(`Error: ${errorMessage}`);
       });
   };
+
   return (
     <div className="transfer-asset-container">
       <h2>Transfer Asset</h2>
@@ -112,7 +98,7 @@ function TransferAsset() {
         >
           <option value="" disabled>Select a User</option>
           {users.map(user => (
-            <option key={user.email} value={user._id}>
+            <option key={user._id} value={user._id}>
               {user.email}
             </option>
           ))}
@@ -128,7 +114,7 @@ function TransferAsset() {
         >
           <option value="" disabled>Select a User</option>
           {users.map(user => (
-            <option key={user.email} value={user._id}>
+            <option key={user._id} value={user._id}>
               {user.email}
             </option>
           ))}
@@ -147,32 +133,26 @@ function TransferAsset() {
             <th>Asset Serialno</th>
             <th>From User Email</th>
             <th>From User Name</th>
-            <th>From User department</th>
+            <th>From User Department</th>
             <th>To User Email</th>
             <th>To User Name</th>
-            <th>To User department</th>
+            <th>To User Department</th>
             <th>Date Transferred</th>
           </tr>
         </thead>
         <tbody>
-        {/* {
-            transferHistory.map((transfer) => {
-              console.log(transfer, 'transfer')
-            })
-          } */}
-
           {transferHistory.length > 0 ? (
             transferHistory.map((transfer, index) => (
               <tr key={index}>
-                <td>{transfer.asset.name}</td>
-                <td>{transfer.asset.serialno}</td>
-                <td>{transfer.fromUser.email}</td>
-                <td>{transfer.fromUser.name}</td>
-                <td>{transfer.fromUser.department}</td>
-                <td>{transfer.toUser.email}</td>
-                <td>{transfer.toUser.name}</td>
-                <td >{transfer.toUser.department}</td>
-                <td>{transfer.dateTransfered}</td>
+                <td>{transfer.asset?.name || "N/A"}</td>
+                <td>{transfer.asset?.serialno || "N/A"}</td>
+                <td>{transfer.fromUser?.email || "N/A"}</td>
+                <td>{transfer.fromUser?.name || "N/A"}</td>
+                <td>{transfer.fromUser?.department || "N/A"}</td>
+                <td>{transfer.toUser?.email || "N/A"}</td>
+                <td>{transfer.toUser?.name || "N/A"}</td>
+                <td>{transfer.toUser?.department || "N/A"}</td>
+                <td>{new Date(transfer.dateTransfered).toLocaleDateString()}</td>
               </tr>
             ))
           ) : (
