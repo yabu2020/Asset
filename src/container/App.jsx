@@ -48,7 +48,7 @@ function App() {
           <Route path="/assettouser" element={<AssetToUser />} />
           <Route path="/transferasset" element={<TransferAsset />} />
           <Route path="/assets" element={<ListAssets />} /> 
-          <Route path="/ViewAsset" element={<ViewAsset />} />
+          <Route path="/viewassets" element={<ViewAsset />} />
           <Route path="/userpage/:userId" element={<Userpage />} />
           <Route path="/security-question/:userId" element={<Security />} />
           <Route path="/approver" element={<Approver cUSer={cUSer} />} />

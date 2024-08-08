@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './Security.css';
 
 function SecurityQuestionPage() {
   const { userId } = useParams();
@@ -12,6 +11,15 @@ function SecurityQuestionPage() {
   const [updateMessage, setUpdateMessage] = useState('');
   const [updateError, setUpdateError] = useState('');
 
+  const predefinedQuestions = [
+    'Date of Birth',
+    'Favorite Food',
+    'Mother’s Maiden Name',
+    'First Pet’s Name',
+    'High School Name',
+    'City of Birth'
+  ];
+
   useEffect(() => {
     if (userId) {
       fetchSecurityQuestion(userId);
@@ -20,10 +28,11 @@ function SecurityQuestionPage() {
 
   const fetchSecurityQuestion = (userId) => {
     axios
-      .get(`http://localhost:3001/security-question/${userId}`)
+      .get('http://localhost:3001/security-question', { params: { userId } })
       .then((response) => {
-        setSecurityQuestion(response.data.securityQuestion || 'Not set');
-        setSecurityAnswer(response.data.securityAnswer || '');
+        const { securityQuestion, securityAnswer } = response.data;
+        setSecurityQuestion(securityQuestion || 'No current security question');
+        setSecurityAnswer(securityAnswer || '');
       })
       .catch((error) => setUpdateError(`Error: ${error.message}`));
   };
@@ -32,12 +41,12 @@ function SecurityQuestionPage() {
     e.preventDefault();
     setUpdateMessage('');
     setUpdateError('');
-  
+
     if (!newSecurityQuestion || !newSecurityAnswer) {
       setUpdateError('Both question and answer are required.');
       return;
     }
-  
+
     axios
       .post('http://localhost:3001/update-security-question', { userId, newSecurityQuestion, newSecurityAnswer })
       .then((response) => {
@@ -53,39 +62,52 @@ function SecurityQuestionPage() {
       })
       .catch((error) => setUpdateError(`Error: ${error.message}`));
   };
-  
 
   return (
-    <div className="security-question-page-container">
-      <h2>Security Question</h2>
-      <p><strong>Current Security Question:</strong> {securityQuestion}</p>
+    <div className="max-w-4xl mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Security Question</h2>
+      <p className="text-lg text-gray-600 mb-6">
+        <strong>Current Security Question:</strong> {securityQuestion}
+      </p>
 
-      <form onSubmit={handleUpdateSecurityQuestion}>
-        <div className="mb-3">
-          <label htmlFor="newSecurityQuestion">
+      <form onSubmit={handleUpdateSecurityQuestion} className="space-y-6">
+        <div>
+          <label htmlFor="newSecurityQuestion" className="block text-lg font-medium text-gray-700 mb-2">
             <strong>New Security Question</strong>
           </label>
-          <input
-            type="text"
-            placeholder="Enter your new security question"
+          <select
+            id="newSecurityQuestion"
             value={newSecurityQuestion}
             onChange={(e) => setNewSecurityQuestion(e.target.value)}
-          />
+            className="w-full p-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            <option value="" disabled>Select a question</option>
+            {predefinedQuestions.map((question, index) => (
+              <option key={index} value={question}>{question}</option>
+            ))}
+          </select>
         </div>
-        <div className="mb-3">
-          <label htmlFor="newSecurityAnswer">
+        <div>
+          <label htmlFor="newSecurityAnswer" className="block text-lg font-medium text-gray-700 mb-2">
             <strong>New Security Answer</strong>
           </label>
           <input
             type="text"
+            id="newSecurityAnswer"
             placeholder="Enter your new security answer"
             value={newSecurityAnswer}
             onChange={(e) => setNewSecurityAnswer(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
-        <button type="submit">Update Security Question</button>
-        {updateMessage && <p className="success-message">{updateMessage}</p>}
-        {updateError && <p className="error-message">{updateError}</p>}
+        <button
+          type="submit"
+          className="w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          Update Security Question
+        </button>
+        {updateMessage && <p className="text-green-600 text-lg">{updateMessage}</p>}
+        {updateError && <p className="text-red-600 text-lg">{updateError}</p>}
       </form>
     </div>
   );

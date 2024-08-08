@@ -46,7 +46,6 @@ function Login({ setCuser }) {
               navigate("/admin"); // Redirect admin to dashboard
               break;
             case "user":
-              console.log(userData);
               navigate(`/userpage/${userData._id}`); // Redirect user to user page 
               break;
             case "Clerk":

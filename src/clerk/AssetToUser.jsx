@@ -110,6 +110,7 @@ function AssetToUser() {
             <th>Assigned To</th>
             <th>Name</th>
             <th>Department</th>
+            <th>Role</th>
             <th>Date</th>
           </tr>
         </thead>
@@ -122,6 +123,7 @@ function AssetToUser() {
                 <td>{assignment.user?.email || "N/A"}</td>
                 <td>{assignment.user?.name || "N/A"}</td>
                 <td>{assignment.user?.department || "N/A"}</td>
+                <td>{assignment.user?.role || "N/A"}</td>
                 <td>{new Date(assignment.dateAssigned).toLocaleDateString()}</td>
               </tr>
             ))

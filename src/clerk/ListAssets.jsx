@@ -56,32 +56,32 @@ function ListAssets() {
   };
 
   return (
-    <div class="grid grid-cols-1 ml-12 lg:grid-cols-1 gap-6 w-screen">
-    <div class="bg-white border border-gray-100 shadow-md shadow-black/10 p-6 rounded-md w-full">
-        <div class="flex justify-between w-full">
+    <div className="grid grid-cols-1 ml-12 lg:grid-cols-1 gap-6 w-screen">
+    <div className="bg-white border border-gray-100 shadow-md shadow-black/10 p-6 rounded-md w-full">
+        <div className="flex justify-between w-full">
             <div>
-                <h1 class="font-semibold bg-gray-50 text-lg">List of Assets</h1>
+                <h1 className="font-semibold bg-gray-50 text-lg">List of Assets</h1>
             </div>
     {message && <p className="text-gray-300 text-md font-medium hover:text-green-500 ml-2">{message}</p>}
      </div>
-     <div class="overflow-x-auto">
+     <div className="overflow-x-auto">
     <table className="w-full flex-grow min-w-[540px]">
       <thead>
         <tr>
-            <th class="text-[15px] uppercase border border-solid tracking-wide font-semibold  text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Name</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Asset Number</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">SerialNo</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Model</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Quantity</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Description</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Status</th>
-            <th class="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Actions</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide font-semibold  text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Name</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Asset Number</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">SerialNo</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Model</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Quantity</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Description</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Status</th>
+            <th className="text-[15px] uppercase border border-solid tracking-wide  font-semibold text-green-400 py-2 px-3 bg-gray-50 text-left rounded-bl-md">Actions</th>
           </tr>
         </thead>
         <tbody>
           {assets.length > 0 ? assets.map((asset) => (
             <tr key={asset._id}>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -93,7 +93,7 @@ function ListAssets() {
                   asset.name
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
               {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -105,7 +105,7 @@ function ListAssets() {
                   asset.assetno
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -117,7 +117,7 @@ function ListAssets() {
                   asset.serialno
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -129,7 +129,7 @@ function ListAssets() {
                   asset.model
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="number"
@@ -141,7 +141,7 @@ function ListAssets() {
                   asset.quantity
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -153,7 +153,7 @@ function ListAssets() {
                   asset.description
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <input
                     type="text"
@@ -165,7 +165,7 @@ function ListAssets() {
                   asset.status
                 )}
               </td>
-              <td class="py-2 px-4 border-b align-middle border-b-gray-50">
+              <td className="py-2 px-4 border-b align-middle border-b-gray-50">
                 {editingAsset === asset._id ? (
                   <>
                     <button onClick={() => saveChanges(asset._id)} className="hover:bg-gray-500 bg-green-50 text-green-400">Save</button>

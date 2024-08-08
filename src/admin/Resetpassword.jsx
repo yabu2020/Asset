@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
-import rrImage from './rr.jpg';
+import resetImage from '../assets/reset.jpg';
 
 function Resetpassword() {
   const [resetEmail, setResetEmail] = useState("");
@@ -76,7 +76,7 @@ function Resetpassword() {
   return (
     <div className="flex items-center min-h-screen bg-cover "
     style={{
-      backgroundImage: `url(${rrImage})`,
+      backgroundImage: `url(${resetImage})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}>

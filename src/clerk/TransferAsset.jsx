@@ -134,9 +134,11 @@ function TransferAsset() {
             <th>From User Email</th>
             <th>From User Name</th>
             <th>From User Department</th>
+            <th>From User Role</th>
             <th>To User Email</th>
             <th>To User Name</th>
             <th>To User Department</th>
+            <th>To User Role</th>
             <th>Date Transferred</th>
           </tr>
         </thead>
@@ -149,9 +151,11 @@ function TransferAsset() {
                 <td>{transfer.fromUser?.email || "N/A"}</td>
                 <td>{transfer.fromUser?.name || "N/A"}</td>
                 <td>{transfer.fromUser?.department || "N/A"}</td>
+                <td>{transfer.fromUser?.role || "N/A"}</td>
                 <td>{transfer.toUser?.email || "N/A"}</td>
                 <td>{transfer.toUser?.name || "N/A"}</td>
                 <td>{transfer.toUser?.department || "N/A"}</td>
+                <td>{transfer.toUser?.role || "N/A"}</td>
                 <td>{new Date(transfer.dateTransfered).toLocaleDateString()}</td>
               </tr>
             ))

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ggImage from './gg.jpg';
+import createImage from '../assets/create.jpg';
 function Createuser({ setUsers }) {
   const [role, setRole] = useState("user");
   const [id, setId] = useState("");
@@ -80,7 +80,7 @@ function Createuser({ setUsers }) {
 
   return (
     <div className="flex items-center justify-center min-h-screen" style={{
-      backgroundImage: `url(${ggImage})`,
+      backgroundImage: `url(${createImage})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import "./UsersList.css";
+
 
 function UsersList() {
   const [users, setUsers] = useState([]);

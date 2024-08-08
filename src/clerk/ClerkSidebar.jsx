@@ -35,7 +35,8 @@ function ClerkSidebar({ children }) {
             icon: <FaExchangeAlt />
         },
         {
-            path: "/viewasset",
+            
+            path: "/viewassets",
             name: "View Asset",
             icon: <FaEye />
         },
@@ -44,7 +45,6 @@ function ClerkSidebar({ children }) {
             name: "Sign Out",
         },
     ];
-
     return (
         <div className="flex">
             {/* Sidebar */}
