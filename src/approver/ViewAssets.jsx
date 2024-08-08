@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function ViewAsset() {
+function ViewAssets() {
   const [email, setEmail] = useState('');
   const [assignedAssets, setAssignedAssets] = useState([]);
   const [message, setMessage] = useState('');
@@ -15,7 +15,7 @@ function ViewAsset() {
     }
     setLoading(true);
     axios
-      .get(`http://localhost:3001/user-id-by-email/${email}`)
+      .get(`http://localhost:3001/user-email/${email}`)
       .then((response) => {
         const { userId } = response.data;
         fetchAssignedAssets(userId);
@@ -99,4 +99,4 @@ function ViewAsset() {
   );
 }
 
-export default ViewAsset;
+export default ViewAssets;

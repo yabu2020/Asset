@@ -3,12 +3,10 @@ import axios from "axios";
 import createImage from '../assets/create.jpg';
 function Createuser({ setUsers }) {
   const [role, setRole] = useState("user");
-  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("");
-  const [idError, setIdError] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -26,16 +24,11 @@ function Createuser({ setUsers }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIdError("");
     setNameError("");
     setEmailError("");
     setPasswordError("");
     setFormError(""); // Clear general form error
 
-    if (!id) {
-      setIdError("Id is required");
-      return;
-    }
     if (!name) {
       setNameError("Name is required");
       return;
@@ -58,11 +51,10 @@ function Createuser({ setUsers }) {
     }
 
     axios
-      .post("http://localhost:3001/adduser", { role, id, name, email, password, department })
+      .post("http://localhost:3001/adduser", { role, name, email, password, department })
       .then((result) => {
         setUsers(prevUsers => [...prevUsers, result.data]);
         alert("User added successfully!");
-        setId("");
         setName("");
         setEmail("");
         setPassword("");
@@ -84,23 +76,15 @@ function Createuser({ setUsers }) {
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}>
-      <div className="w-full max-w-md rounded-lg shadow-lg p-8 ">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-600">Create User</h2>
+<div className="flex items-center ml-20 justify-center">
+<div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '1200px' }}>
+        <h2 className="text-2xl font-bold text-center mb-6 text-green-400">Create User</h2>
         {formError && <p className="text-red-500 mb-4">{formError}</p>}
         <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="id" className="block font-bold mb-2 text-gray-600">ID</label>
-          <input
-            type="text"
-            placeholder="Enter Id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
-            />
-          {idError && <p className="text-red-500 text-sm mt-1">{idError}</p>}
-        </div>
-          <div className="mb-4">
-            <label className="block font-bold mb-2 text-gray-600" htmlFor="name">Name</label>
+          
+        <div className="flex flex-wrap -mx-3 mr-20 mb-6">
+  <div className="w-full md:w-1/2 px-3">
+  <label className="block font-bold mb-2 text-gray-400" htmlFor="name">Name</label>
             <input
               type="text"
               placeholder="Enter Name"
@@ -109,9 +93,9 @@ function Createuser({ setUsers }) {
               className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
             />
             {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
-          </div>
-          <div className="mb-4">
-            <label className="block font-bold mb-2 text-gray-600" htmlFor="email">Email</label>
+        </div>
+          <div className="mb-4 w-full md:w-1/2 px-3">
+          <label className="block font-bold mb-2 text-gray-400" htmlFor="email">Email</label>
             <input
               type="email"
               placeholder="Enter Email"
@@ -121,8 +105,10 @@ function Createuser({ setUsers }) {
             />
             {emailError && <p className="text-red-500 mt-2">{emailError}</p>}
           </div>
-          <div className="mb-4">
-            <label className="block font-bold mb-2 text-gray-600" htmlFor="password">Password</label>
+          </div>
+          <div className="flex flex-wrap -mx-3 mr-20 mb-6">
+  <div className="w-full md:w-1/2 px-3  mb-4">
+  <label className="block font-bold mb-2 text-gray-400" htmlFor="password">Password</label>
             <input
               type="password"
               placeholder="Enter Password"
@@ -131,26 +117,33 @@ function Createuser({ setUsers }) {
               className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-2 border-gray-300 ${passwordError ? 'border-red-500' : ''}`}
             />
             {passwordError && <p className="text-red-500 mt-2">{passwordError}</p>}
+          
           </div>
-          <div className="mb-4">
-          <label htmlFor="department" className="block text-sm font-medium text-gray-700">Department</label>
+        
+          <div className="mb-4 w-full md:w-1/2 px-3 ">
+          <label className="block font-bold mb-2 text-gray-400" htmlFor="department">Department</label>
           <select
             value={department}
-            onChange={(e) => setDepartment(e.target.value)}
-            className={`w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-1 border-gray-300 ${nameError ? 'border-red-500' : ''}`}
-            >
-            <option value="CS">CS</option>
+            onChange={(e) =>setDepartment(e.target.value)}
+            className="mt-1 block w-full px-3 py-2 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 border-gray-300 focus:ring-green-100 sm:text-sm"
+          >
+            <option value="">Department</option>
             <option value="IT">IT</option>
             <option value="IS">IS</option>
             <option value="ES">ES</option>
+            <option value="CS">CS</option>
           </select>
-        </div>
+        
+          </div>
+          </div>
+        
+          
           <div className="mb-4">
-            <label className="block font-bold mb-2 text-gray-600" htmlFor="role">Role</label>
+            <label className="block font-bold mb-2 text-gray-400" htmlFor="role">Role</label>
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full px-3 py-2 rounded bg-white text-gray-600 focus:outline-none focus:ring focus:ring-green-100 border-2 border-gray-300"
+              className="w-full px-3 py-2 rounded-md mb-6 shadow-sm bg-white text-gray-600 focus:outline-none focus:ring-1 focus:ring-green-200 border-gray-300"
             >
               <option value="user">User</option>
               <option value="Admin">Admin</option>
@@ -158,16 +151,18 @@ function Createuser({ setUsers }) {
               <option value="asset approver">Asset Approver</option>
             </select>
           </div>
+          <div className="mb-4 w-full md:w-1/2 ml-40 px-3 ">
           <button
-            type="submit"
-            className="w-full bg-gray-300 hover:bg-green-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-green-200"
-          >
-            Add User
-          </button>
-        </form>
+            type="submit"className="w-full bg-green-300 hover:bg-gray-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-green-200"
+            >
+              Add User
+            </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  );
-}
-
-export default Createuser;
+      </div>
+    );
+  }
+  
+  export default Createuser;

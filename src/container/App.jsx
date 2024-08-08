@@ -6,6 +6,7 @@ import Login from "../Login";
 import Reset from "../Reset";
 import Userpage from "../user/Userpage";
 import Approver from "../approver/Approver";
+import ViewAssets from "../approver/ViewAssets";
 import AdminSidebar from "../admin/AdminSidebar";
 import Viewasset from '../admin/Viewasset';
 import Resetpassword from "../admin/Resetpassword";
@@ -51,7 +52,8 @@ function App() {
           <Route path="/viewassets" element={<ViewAsset />} />
           <Route path="/userpage/:userId" element={<Userpage />} />
           <Route path="/security-question/:userId" element={<Security />} />
-          <Route path="/approver" element={<Approver cUSer={cUSer} />} />
+          <Route path="/approver" element={<Approver />} />
+          <Route path="/view-asset" element={<ViewAssets />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
