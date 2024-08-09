@@ -21,7 +21,7 @@ function AssetApprover() {
     axios
       .get("http://localhost:3001/assigned-assets")
       .then((response) => {
-        console.log("Fetched assigned assets:", response.data);
+        //console.log("Fetched assigned assets:", response.data);
         setAssignedAssets(response.data);
       })
       .catch((error) => setMessage(`Error fetching assigned assets: ${error.message}`));

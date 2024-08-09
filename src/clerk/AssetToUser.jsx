@@ -20,7 +20,7 @@ function AssetToUser() {
     axios
       .get("http://localhost:3001/assets")
       .then((response) => {
-        console.log("Fetched assets:", response.data); // Log fetched assets
+        // console.log("Fetched assets:", response.data); // Log fetched assets
         setAssets(response.data.flatMap(category => category.assets)); // Flatten the asset array
       })
       .catch((error) => setMessage(`Error fetching assets: ${error.message}`));
@@ -30,7 +30,7 @@ function AssetToUser() {
     axios
       .get("http://localhost:3001/users")
       .then((response) => {
-        console.log("Fetched users:", response.data); // Log fetched users
+       
         setUsers(response.data);
       })
       .catch((error) => setMessage(`Error fetching users: ${error.message}`));
@@ -40,7 +40,7 @@ function AssetToUser() {
     axios
       .get("http://localhost:3001/assigned-assets")
       .then((response) => {
-        console.log("Fetched assigned assets:", response.data); // Log fetched assigned assets
+        //console.log("Fetched assigned assets:", response.data); // Log fetched assigned assets
         setAssignedAssets(response.data);
       })
       .catch((error) => setMessage(`Error fetching assigned assets: ${error.message}`));

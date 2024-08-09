@@ -152,7 +152,7 @@ function Sidebar({ children }) {
                             to={item.path}
                             key={index}
                             className="flex items-center py-2 px-4 hover:bg-green-400 transition-colors duration-200"
-                            activeClassName="bg-green-400" // Optional: highlight the active menu item
+                            //activeClassName="bg-green-400" // Optional: highlight the active menu item
                         >
                             <div className="text-xl mb-4 mr-2">{item.icon}</div>
                             <div className={`text-white text-xl ml-2 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>

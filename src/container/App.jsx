@@ -9,7 +9,7 @@ import Approver from "../approver/Approver";
 // import ViewAssets from "../approver/ViewAssets";
 import ApproverSidebar from "../approver/ApproverSidebar";
 import AdminSidebar from "../admin/AdminSidebar";
-import Viewasset from '../admin/Viewasset';
+//import Viewasset from '../admin/Viewasset';
 import Resetpassword from "../admin/Resetpassword";
 import Createuser from '../admin/Createuser';
 import UsersList from '../admin/UsersList';
@@ -30,6 +30,9 @@ function App() {
     } else if (cUSer.role === 'Clerk') {
       return <ClerkSidebar />;
     }
+    else if (cUSer.role === 'asset approver') {
+      return <ApproverSidebar />;
+    }
     return null;
   };
 
@@ -39,6 +42,7 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Login setCuser={setCuser} />} />  
+          
           <Route path="/reset-password" element={<Reset />} />
           <Route path="/admin/:userId" element={<AdminSidebar cUSer={cUSer} />} />
           <Route path="/users" element={<UsersList users={users} />} />
@@ -51,8 +55,10 @@ function App() {
           <Route path="/transferasset" element={<TransferAsset />} />
           <Route path="/assets" element={<ListAssets />} /> 
           <Route path="/category" element={<Category />} />
+          {/* user */}
           <Route path="/userpage/:userId" element={<Userpage />} />
           <Route path="/security-question/:userId" element={<Security />} />
+          {/* approver */}
           <Route path="/approver/:userId" element={<ApproverSidebar />} />
           <Route path="/approver" element={<Approver />} />
           {/* <Route path="/view-asset" element={<ViewAssets />} /> */}

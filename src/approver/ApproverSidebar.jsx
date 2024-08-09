@@ -44,7 +44,7 @@ function ApproverSidebar({ children }) {
         <div className="flex ">
             <div className={`fixed top-0 left-0 bottom-0 bg-gray-300 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} text-white flex flex-col shadow-lg border-r border-gray-700`}>
             <div className="flex items-center p-4">
-                    <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Admin Page</h1>
+                    <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Approver Page</h1>
                     <div className="ml-auto text-2xl cursor-pointer pr-4 hover:bg-green-300 rounded-full p-1 transition-colors duration-200" onClick={toggle}>
                         <FaBars />
                     </div>
@@ -55,7 +55,7 @@ function ApproverSidebar({ children }) {
                             to={item.path}
                             key={index}
                             className="flex items-center py-2 px-4 hover:bg-green-400 transition-colors duration-200"
-                            activeClassName="bg-green-400" // Optional: highlight the active menu item
+                            //activeClassName="bg-green-400" // Optional: highlight the active menu item
                         >
                             <div className="text-xl mb-4 mr-2">{item.icon}</div>
                             <div className={`text-white text-xl ml-2 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
