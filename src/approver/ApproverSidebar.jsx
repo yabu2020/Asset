@@ -1,97 +1,10 @@
-// import React, { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
-// import { FaBars, FaUserAlt, FaCommentAlt, FaEye } from "react-icons/fa";
-
-// function Sidebar({ children }) {
-//     const [isOpen, setIsOpen] = useState(false);
-//     const toggle = () => setIsOpen(!isOpen);
-
-//     const menuItem = [
-//         {
-//             path: "/users",
-//             name: "List Of Users",
-//             icon: <FaUserAlt />
-//         },
-//         {
-//             path: "/adduser",
-//             name: "Create User",
-//             icon: <FaUserAlt />
-//         },
-//         {
-//             path: "/resetpassword",
-//             name: "ResetPassword",
-//             icon: <FaCommentAlt />
-//         },
-//         {
-//             path: "/Viewasset",
-//             name: "View Asset",
-//             icon: <FaEye />
-//         },
-//         {
-//             path: "/",
-//             name: "Sign Out",
-//         },
-//     ];
-
-//     return (
-//         <div className="flex">
-//             {/* Sidebar */}
-//             <div className={`fixed top-0 left-0 bottom-0 bg-gray-800 text-white transition-all duration-500 ease-in-out ${isOpen ? 'w-56' : 'w-24'} flex flex-col z-20`}>
-//                 <div className="flex items-center p-4 border-b border-gray-700">
-//                     <h1 className={`text-2xl ml-2 ${isOpen ? 'block' : 'hidden'} text-green-400`}>Admin Page</h1>
-//                     <div className={`ml-auto text-2xl cursor-pointer p-4 ${isOpen ? 'ml-16' : 'ml-0'} hover:bg-gray-700 rounded-full transition-colors duration-200`} onClick={toggle}>
-//                         <FaBars />
-//                     </div>
-//                 </div>
-//                 <div className="flex-grow overflow-y-auto">
-//                     {menuItem.map((item, index) => (
-//                         <NavLink to={item.path} key={index} className="flex items-center text-white text-lg py-2 px-4 hover:bg-sky-300 hover:text-black transition-all duration-300 ease-in-out">
-//                             <div className="text-2xl">{item.icon}</div>
-//                             <div className={`ml-4 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
-//                         </NavLink>
-//                     ))}
-//                 </div>
-//             </div>
-//             {/* Main Content */}
-//             <main className="flex-1">
-//                 {children}
-//             </main>
-//         </div>
-//     );
-// }
-
-// export default Sidebar;
-// return (
-
-//       <div className="flex h-screen">
-//       <div className={`fixed top-0 left-0 bottom-0  bg-gray-300  transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} bg-green-3500 text-white flex flex-col shadow-lg border-r border-gray-700`}>
-//       <div className="flex items-center p-4 ">
-//       <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Admin page</h1>
-//       <div className="ml-auto text-2xl cursor-pointer pr-4 hover:bg-green-300 rounded-full p-1 transition-colors duration-200" onClick={toggle}>
-//                         <FaBars />
-//                     </div>
-//           </div>
-//           {menuItem.map((item, index) => (
-//             <NavLink to={item.path} key={index} className="link flex items-center py-2 px-4 hover:bg-green-400 transition-colors">
-//               <div className="icon text-xl mb-4 mr-2">{item.icon}</div>
-//               <div className={`link_text mb-4 ml-2 text-white text-xl mr-2  ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
-//             </NavLink>
-//           ))}
-//         </div>
-//         <main className="flex-1 p-4">{children}</main>
-//       </div>
-    
-//   );
-// }
-
-// export default Sidebar;
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { useParams, Link , useLocation} from 'react-router-dom';
 import { FaBars, FaUserAlt, FaCommentAlt, FaEye } from "react-icons/fa";
 
-function Sidebar({ children }) {
+function ApproverSidebar({ children }) {
     const [isOpen, setIsOpen] = useState(true); // Start with the sidebar open
     const { userId } = useParams();
     const toggle = () => setIsOpen(!isOpen);
@@ -99,23 +12,13 @@ function Sidebar({ children }) {
     const [message, setMessage] = useState('');
     const location = useLocation();
     const [isAuthenticated, setIsAuthenticated] = useState(true); // Initially set to true, assuming the user is authenticated
-
+    
 
     const menuItem = [
         {
-            path: "/users",
-            name: "List Of Users",
+            path: "/approver",
+            name: "Approve",
             icon: <FaUserAlt />
-        },
-        {
-            path: "/adduser",
-            name: "Create User",
-            icon: <FaUserAlt />
-        },
-        {
-            path: "/resetpassword",
-            name: "Reset Password",
-            icon: <FaCommentAlt />
         },
         {
             path: "/",
@@ -140,14 +43,14 @@ function Sidebar({ children }) {
         {isAuthenticated && location.pathname !== '/' && (
         <div className="flex ">
             <div className={`fixed top-0 left-0 bottom-0 bg-gray-300 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} text-white flex flex-col shadow-lg border-r border-gray-700`}>
-                <div className="flex items-center p-4">
+            <div className="flex items-center p-4">
                     <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Admin Page</h1>
                     <div className="ml-auto text-2xl cursor-pointer pr-4 hover:bg-green-300 rounded-full p-1 transition-colors duration-200" onClick={toggle}>
                         <FaBars />
                     </div>
                 </div>
                 <div className="flex-1">
-                    {menuItem.map((item, index) => (
+                {menuItem.map((item, index) => (
                         <NavLink
                             to={item.path}
                             key={index}
@@ -201,7 +104,4 @@ function Sidebar({ children }) {
     );
 }
 
-export default Sidebar;
-
-
-
+export default ApproverSidebar;

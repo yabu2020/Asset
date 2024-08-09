@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import createImage from '../assets/create.jpg';
+
 function Createuser({ setUsers }) {
   const [role, setRole] = useState("user");
   const [name, setName] = useState("");
@@ -71,13 +71,8 @@ function Createuser({ setUsers }) {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen" style={{
-      backgroundImage: `url(${createImage})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}>
 <div className="flex items-center ml-20 justify-center">
-<div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '1200px' }}>
+<div className="w-full w-sm p-8 rounded-lg shadow-lg" style={{ maxWidth: '600px' }}>
         <h2 className="text-2xl font-bold text-center mb-6 text-green-400">Create User</h2>
         {formError && <p className="text-red-500 mb-4">{formError}</p>}
         <form onSubmit={handleSubmit}>
@@ -161,7 +156,7 @@ function Createuser({ setUsers }) {
           </form>
         </div>
       </div>
-      </div>
+      
     );
   }
   

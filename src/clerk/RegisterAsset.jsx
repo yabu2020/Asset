@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import clerkImage from '../assets/clerk.jpg';
 function RegisterAsset() {
   const [name, setName] = useState('');
   const [assetno, setAssetno] = useState('');
@@ -48,111 +48,114 @@ function RegisterAsset() {
         setMessage(`Error: ${error.response ? error.response.data.error : error.message}`);
       });
   };
+return (
+  <div className="flex items-center justify-center min-h-screen bg-cover"
+    style={{
+      backgroundImage: `url(${clerkImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    <div className="flex items-center justify-center">
+      <div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '780px' }}>
+          <h1 className="text-2xl font-bold mb-6 text-center text-green-300">Register Asset</h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+   <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full md:w-1/2 px-3">
+      <label htmlFor="name" className="block ml-0 font-medium text-gray-600 mb-1">Asset Name:</label>
+      <input
+        type="text"
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        className="w-full px-3 ml-0 bg-gray-100 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+      />
+    </div>
+  
 
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Register Asset</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name:</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
+    <div className="w-full md:w-1/2 px-3">
+      <label htmlFor="assetno" className="block font-medium text-gray-600 mb-1">Asset Number:</label>
+      <input
+        type="text"
+        id="assetno"
+        value={assetno}
+        onChange={(e) => setAssetno(e.target.value)}
+        required
+        className="w-full px-3 py-2 bg-gray-100 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+      />
+    </div>
+  </div>
 
-          {/* Asset Number */}
-          <div>
-            <label htmlFor="assetno" className="block text-sm font-medium text-gray-700 mb-1">Asset Number:</label>
-            <input
-              type="text"
-              id="assetno"
-              value={assetno}
-              onChange={(e) => setAssetno(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full md:w-1/2 px-3">
+      <label htmlFor="serialno" className="block ml-0 font-medium text-gray-600 mb-1">Serial No:</label>
+      <input
+        type="text"
+        id="serialno"
+        value={serialno}
+        onChange={(e) => setSerialno(e.target.value)}
+        required
+        className="w-full px-3 py-2 ml-0 bg-gray-100 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+      />
+    </div>
+  
+  <div className="w-full md:w-1/2 px-3">
+    <label htmlFor="model" className="block  font-medium text-gray-600 mb-1">Model:</label>
+    <input
+      type="text"
+      id="model"
+      value={model}
+      onChange={(e) => setModel(e.target.value)}
+      required
+      className="w-full px-3 py-2 bg-gray-100 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+    />
+  </div>
+  </div>
+  <div className="flex flex-wrap -mx-3 mb-6">
+  <div className="w-full md:w-1/2 px-3">
+    <label htmlFor="quantity" className="block ml-0 font-medium text-gray-600 mb-1">Quantity:</label>
+    <input
+      type="text"
+      id="quantity"
+      value={quantity}
+      onChange={(e) => setQuantity(e.target.value)}
+      required
+      className="w-full px-3 py-2 ml-0 bg-gray-100 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-700 border-gray-300"
+    />
+  </div>
 
-          {/* Serial Number */}
-          <div>
-            <label htmlFor="serialno" className="block text-sm font-medium text-gray-700 mb-1">Serial Number:</label>
-            <input
-              type="text"
-              id="serialno"
-              value={serialno}
-              onChange={(e) => setSerialno(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
-
-          {/* Model */}
-          <div>
-            <label htmlFor="model" className="block text-sm font-medium text-gray-700 mb-1">Model:</label>
-            <input
-              type="text"
-              id="model"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
-
-          {/* Quantity */}
-          <div>
-            <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-1">Quantity:</label>
-            <input
-              type="number"
-              id="quantity"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
-
-          {/* Description */}
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">Description:</label>
-            <input
-              type="text"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-            />
-          </div>
-
-          {/* Category */}
-          <div>
+  <div className="w-full md:w-1/2 px-3">
             <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">Category:</label>
             <input
               type="text"
               id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+               value={category}
+               onChange={(e) => setCategory(e.target.value)}
+               required
+              className="w-full px-3 py-2 border bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+             />
+         </div>
+         </div>
+          <div>
+            <label htmlFor="description" className="block font-medium text-gray-600 mb-1">Description:</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full px-3 py-2 bg-gray-100 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
             />
           </div>
-
-          {/* Status */}
+         
+          {/* Category */}
+        
           <div>
-            <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">Status:</label>
+            <label htmlFor="status" className="block  font-medium text-gray-600 mb-1">Status:</label>
             <select
               id="status"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+              className="w-full px-3 py-2 bg-gray-200 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 border-gray-300"
             >
               <option value="Available">Available</option>
               <option value="In Use">In Use</option>
@@ -160,17 +163,18 @@ function RegisterAsset() {
               <option value="Retired">Retired</option>
             </select>
           </div>
-
+        <div className="w-full ml-20 md:w-1/2 px-3">
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full mt-2 bg-green-300 py-2 px-4 text-black rounded-md shadow hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Register Asset
           </button>
-
+          </div>  
           {message && <p className="text-gray-800 text-sm mt-4">{message}</p>}
         </form>
       </div>
+    </div>
     </div>
   );
 }

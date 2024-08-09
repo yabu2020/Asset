@@ -43,16 +43,16 @@ function Login({ setCuser }) {
           // Redirect based on role
           switch (userData.role) {
             case "Admin":
-              navigate("/admin"); // Redirect admin to dashboard
+              navigate(`/admin/${userData._id}`); // Redirect admin to dashboard
               break;
             case "user":
               navigate(`/userpage/${userData._id}`); // Redirect user to user page 
               break;
             case "Clerk":
-              navigate("/clerk"); // Redirect clerk to clerk page
+              navigate(`/clerk/${userData._id}`); // Redirect clerk to clerk page
               break;
             case "asset approver":
-              navigate("/approver"); // Redirect asset approver to asset approver page
+              navigate(`/approver/${userData._id}`); // Redirect asset approver to asset approver page
               break;
             default:
               alert("You are not registered");
@@ -117,7 +117,7 @@ function Login({ setCuser }) {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
             {emailError && <p className="text-red-500">{emailError}</p>}
@@ -134,7 +134,7 @@ function Login({ setCuser }) {
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 pr-12"
+                className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 pr-12"
                 required
               />
               {/* Eye Icon */}
