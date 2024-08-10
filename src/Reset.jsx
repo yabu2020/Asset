@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import icons
 
 function ResetPassword() {
   const { userId } = useParams();
@@ -9,12 +10,14 @@ function ResetPassword() {
   const [securityAnswer, setSecurityAnswer] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showNewPassword, setShowNewPassword] = useState(false); // State for new password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // Updated regular expression for password validation
-  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}|:;<>,.?~`])[A-Za-z\d!@#$%^&*()_+{}|:;<>,.?~`]{6,}$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
   const predefinedQuestions = [
     'Date of Birth',
@@ -44,7 +47,7 @@ function ResetPassword() {
 
     // Validate new password
     if (!passwordRegex.test(newPassword)) {
-      setError('Password must be at least 6 characters long and include letters, numbers, and special characters.');
+      setError('Password must be at least 6 characters long and include both letters and numbers.');
       return;
     }
 
@@ -124,25 +127,43 @@ function ResetPassword() {
             </div>
             <div>
               <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">New Password</label>
-              <input
-                type="password"
-                id="newPassword"
-                placeholder="Enter new password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              <div className="relative">
+                <input
+                  type={showNewPassword ? 'text' : 'password'}
+                  id="newPassword"
+                  placeholder="Enter new password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                <div
+                  className="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                  title={showNewPassword ? 'Hide Password' : 'Show Password'}
+                >
+                  {showNewPassword ? <FaEyeSlash /> : <FaEye />}
+                </div>
+              </div>
             </div>
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm New Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirm new password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  id="confirmPassword"
+                  placeholder="Confirm new password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+                <div
+                  className="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  title={showConfirmPassword ? 'Hide Password' : 'Show Password'}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </div>
+              </div>
             </div>
           </>
         )}

@@ -4,7 +4,7 @@ import axios from 'axios';
 function Category() {
   const [code, setCode] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(''); // Correct spelling
+  const [category, setCategory] = useState(''); 
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
@@ -82,7 +82,7 @@ function Category() {
               Register Category
             </button>
           </div>  
-          {message && <p className="text-gray-800 text-sm mt-4">{message}</p>}
+          {message && <p className="text-green-400 text-sm mt-4">{message}</p>}
         </form>
       </div>
     </div>

@@ -30,7 +30,6 @@ function AssetToUser() {
     axios
       .get("http://localhost:3001/users")
       .then((response) => {
-       
         setUsers(response.data);
       })
       .catch((error) => setMessage(`Error fetching users: ${error.message}`));
@@ -76,7 +75,7 @@ function AssetToUser() {
     >
       <div className="max-w-4xl mx-auto p-6 rounded-lg shadow-md bg-white">
         <h2 className="text-3xl mt-4 font-bold text-gray-400 mb-6">Assign Asset to User</h2>
-        {message && <p className="text-red-600 text-lg mb-4">{message}</p>}
+        {message && <p className="text-green-400 text-lg mb-4">{message}</p>}
 
         <div className="mb-6">
           <div className="flex items-center space-x-4">

@@ -4,9 +4,9 @@ import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
 
 function Login({ setCuser }) {
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const [tooltip, setTooltip] = useState(""); // State for tooltip text
@@ -16,14 +16,14 @@ function Login({ setCuser }) {
     e.preventDefault();
 
     // Reset errors
-    setEmailError("");
+    setNameError("");
     setPasswordError("");
 
     // Basic validation
     let hasError = false;
 
-    if (!email) {
-      setEmailError("Email is required");
+    if (!name) {
+      setNameError("Name is required");
       hasError = true;
     }
     if (!password) {
@@ -34,7 +34,7 @@ function Login({ setCuser }) {
     if (hasError) return; // Prevent form submission if there are errors
 
     axios
-      .post("http://localhost:3001", { email, password })
+      .post("http://localhost:3001", { name, password })
       .then((result) => {
         const response = result.data;
         if (response[0] === "good") {
@@ -61,8 +61,8 @@ function Login({ setCuser }) {
           // Handle error from the backend
           if (response.message === "Incorrect password") {
             setPasswordError("Incorrect password");
-          } else if (response.message === "No record found with this email") {
-            setEmailError("No record found with this email");
+          } else if (response.message === "No record found with this name") {
+            setNameError("No record found with this name");
           } else {
             alert("Error occurred during login");
           }
@@ -74,7 +74,7 @@ function Login({ setCuser }) {
           if (err.response.status === 401) {
             setPasswordError("Incorrect password");
           } else if (err.response.status === 404) {
-            setEmailError("No record found with this email");
+            setNameError("No record found with this Name");
           } else {
             alert("An unexpected error occurred");
           }
@@ -107,20 +107,20 @@ function Login({ setCuser }) {
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 text-sm text-gray-600">
-              Email
+            <label htmlFor="name" className="block mb-2 text-sm text-gray-600">
+              Name
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="name"
+              id="name"
+              name="name"
+              placeholder="Enter UserName"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full px-4 py-2 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
-            {emailError && <p className="text-red-500">{emailError}</p>}
+            {nameError && <p className="text-red-500">{nameError}</p>}
           </div>
           <div className="mb-6 relative">
             <label htmlFor="password" className="block mb-2 text-sm text-gray-600">

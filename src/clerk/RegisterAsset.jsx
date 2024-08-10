@@ -75,6 +75,7 @@ function RegisterAsset() {
         <div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '780px' }}>
           <h1 className="text-2xl font-bold mb-6 text-center text-green-300">Register Asset</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
+          {message && <p className="text-green-400 text-sm mt-4">{message}</p>}
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3">
                 <label htmlFor="name" className="block ml-0 font-medium text-gray-600 mb-1">Asset Name:</label>
@@ -190,7 +191,6 @@ function RegisterAsset() {
                 Register Asset
               </button>
             </div>  
-            {message && <p className="text-gray-800 text-sm mt-4">{message}</p>}
           </form>
         </div>
       </div>

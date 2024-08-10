@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import { useParams, Link , useLocation} from 'react-router-dom';
-import { FaBars, FaUserAlt, FaCommentAlt, FaEye } from "react-icons/fa";
+import { useParams , useLocation} from 'react-router-dom';
+import { FaBars, FaUserAlt} from "react-icons/fa";
 
 function ApproverSidebar({ children }) {
     const [isOpen, setIsOpen] = useState(true); // Start with the sidebar open
@@ -55,7 +55,6 @@ function ApproverSidebar({ children }) {
                             to={item.path}
                             key={index}
                             className="flex items-center py-2 px-4 hover:bg-green-400 transition-colors duration-200"
-                            //activeClassName="bg-green-400" // Optional: highlight the active menu item
                         >
                             <div className="text-xl mb-4 mr-2">{item.icon}</div>
                             <div className={`text-white text-xl ml-2 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
@@ -94,9 +93,6 @@ function ApproverSidebar({ children }) {
         </div>
     </main>
 )}
-
-     
-    
     </div>
            )}
     </>
