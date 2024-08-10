@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import clerkImage from '../assets/clerk.jpg';
 
+
 function AssetApprover() {
   const [assignedAssets, setAssignedAssets] = useState([]);
   const [filteredAssets, setFilteredAssets] = useState([]);
