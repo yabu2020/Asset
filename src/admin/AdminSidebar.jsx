@@ -51,7 +51,7 @@ function Sidebar({ children }) {
     return (
         <>
         {isAuthenticated && location.pathname !== '/' && (
-        <div className="flex ">
+        <div className="flex relative ">
             <div className={`fixed top-0 left-0 bottom-0 bg-gray-300 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} text-white flex flex-col shadow-lg border-r border-gray-700`}>
                 <div className="flex items-center p-4">
                     <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Admin Page</h1>

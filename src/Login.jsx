@@ -87,7 +87,7 @@ function Login({ setCuser }) {
   };
 
   const handleForgotPassword = () => {
-    window.location.reload()
+   
     navigate("/reset-password"); // Navigate to the password reset page or modal
   };
 

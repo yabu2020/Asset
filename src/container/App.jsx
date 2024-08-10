@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
 import Login from "../Login";
 import Reset from "../Reset";
@@ -18,6 +18,7 @@ import ListAssets from '../clerk/ListAssets';
 import TransferAsset from "../clerk/TransferAsset";
 import Category from '../clerk/Category';
 import Security from '../user/Security';
+
 
 function App() {
   const [cUSer, setCuser] = useState({});
@@ -61,6 +62,7 @@ function App() {
           <Route path="/approver" element={<Approver />} />
           
           <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </div>
     </BrowserRouter>
