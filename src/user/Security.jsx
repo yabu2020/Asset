@@ -28,7 +28,7 @@ function SecurityQuestionPage() {
 
   const fetchSecurityQuestion = (userId) => {
     axios
-      .get('http://localhost:3001/security-question', { params: { userId } })
+      .get('https://asset-backend-xlfw.onrender.com/security-question', { params: { userId } })
       .then((response) => {
         const { securityQuestion, securityAnswer } = response.data;
         setSecurityQuestion(securityQuestion || 'No current security question');
@@ -48,7 +48,7 @@ function SecurityQuestionPage() {
     }
 
     axios
-      .post('http://localhost:3001/update-security-question', { userId, newSecurityQuestion, newSecurityAnswer })
+      .post('https://asset-backend-xlfw.onrender.com/update-security-question', { userId, newSecurityQuestion, newSecurityAnswer })
       .then((response) => {
         if (response.data.success) {
           setUpdateMessage('Security question updated successfully.');

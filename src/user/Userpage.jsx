@@ -16,7 +16,7 @@ function UserPage() {
 
   const fetchAssignedAssets = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:3001/assigned-assets/${userId}`);
+      const response = await axios.get(`https://asset-backend-xlfw.onrender.com/assigned-assets/${userId}`);
       if (response.data.length === 0) {
         setMessage('No assets assigned');
         setAssignedAssets([]);

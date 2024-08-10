@@ -12,17 +12,17 @@ function TransferAsset() {
 
   useEffect(() => {
     // Fetch assets, users, and transfer history
-    axios.get("http://localhost:3001/assets")
+    axios.get("https://asset-backend-xlfw.onrender.com/assets")
       .then(response => {
         setAssets(response.data.flatMap(category => category.assets));
       })
       .catch(error => setMessage(`Error fetching assets: ${error.message}`));
     
-    axios.get("http://localhost:3001/users")
+    axios.get("https://asset-backend-xlfw.onrender.com/users")
       .then(response => setUsers(response.data))
       .catch(error => setMessage(`Error fetching users: ${error.message}`));
     
-    axios.get("http://localhost:3001/transfer-history")
+    axios.get("https://asset-backend-xlfw.onrender.com/transfer-history")
       .then(response => setTransferHistory(response.data))
       .catch(error => setMessage(`Error fetching transfer history: ${error.message}`));
   }, []);
@@ -33,7 +33,7 @@ function TransferAsset() {
       return;
     }
 
-    axios.post("http://localhost:3001/transferasset", {
+    axios.post("https://asset-backend-xlfw.onrender.com/transferasset", {
       assetId: selectedAsset,
       fromUserId: fromUser,
       toUserId: toUser

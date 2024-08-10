@@ -24,7 +24,7 @@ function Category() {
     };
 
     // Send data to the backend
-    axios.post('http://localhost:3001/category', payload)
+    axios.post('https://asset-backend-xlfw.onrender.com/category', payload)
       .then(response => {
         setMessage('Category registered successfully.');
         setCode('');

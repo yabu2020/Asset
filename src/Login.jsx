@@ -34,7 +34,7 @@ function Login({ setCuser }) {
     if (hasError) return; // Prevent form submission if there are errors
 
     axios
-      .post("http://localhost:3001", { name, password })
+      .post("https://asset-backend-xlfw.onrender.com", { name, password })
       .then((result) => {
         const response = result.data;
         if (response[0] === "good") {

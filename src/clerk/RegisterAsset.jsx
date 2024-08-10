@@ -16,7 +16,7 @@ function RegisterAsset() {
 
   useEffect(() => {
     // Fetch categories from the backend when the component mounts
-    axios.get('http://localhost:3001/categories')
+    axios.get('https://asset-backend-xlfw.onrender.com/categories')
       .then(response => {
         setCategories(response.data); // Update state with fetched categories
       })
@@ -46,7 +46,7 @@ function RegisterAsset() {
       category, // Add category to asset instances
     }));
 
-    axios.post('http://localhost:3001/registerassets', assetInstances)
+    axios.post('https://asset-backend-xlfw.onrender.com/registerassets', assetInstances)
       .then(response => {
         setMessage('Assets registered successfully.');
         setName('');

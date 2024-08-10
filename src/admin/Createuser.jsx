@@ -54,7 +54,7 @@ function Createuser({ setUsers }) {
     }
 
     axios
-      .post("http://localhost:3001/adduser", { role, name, email, password, department })
+      .post("https://asset-backend-xlfw.onrender.com/adduser", { role, name, email, password, department })
       .then((result) => {
         setUsers(prevUsers => [...prevUsers, result.data]);
         alert("User added successfully!");

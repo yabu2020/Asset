@@ -18,7 +18,7 @@ function AssetToUser() {
 
   const fetchAssets = () => {
     axios
-      .get("http://localhost:3001/assets")
+      .get("https://asset-backend-xlfw.onrender.com/assets")
       .then((response) => {
         // console.log("Fetched assets:", response.data); // Log fetched assets
         setAssets(response.data.flatMap(category => category.assets)); // Flatten the asset array
@@ -28,7 +28,7 @@ function AssetToUser() {
 
   const fetchUsers = () => {
     axios
-      .get("http://localhost:3001/users")
+      .get("https://asset-backend-xlfw.onrender.com/users")
       .then((response) => {
         setUsers(response.data);
       })
@@ -37,7 +37,7 @@ function AssetToUser() {
 
   const fetchAssignedAssets = () => {
     axios
-      .get("http://localhost:3001/assigned-assets")
+      .get("https://asset-backend-xlfw.onrender.com/assigned-assets")
       .then((response) => {
         //console.log("Fetched assigned assets:", response.data); // Log fetched assigned assets
         setAssignedAssets(response.data);
@@ -52,7 +52,7 @@ function AssetToUser() {
     }
 
     axios
-      .post("http://localhost:3001/giveasset", {
+      .post("https://asset-backend-xlfw.onrender.com/giveasset", {
         assetId: selectedAsset,
         userId: selectedUser,
       })

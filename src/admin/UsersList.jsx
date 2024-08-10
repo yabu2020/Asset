@@ -11,7 +11,7 @@ function UsersList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/users")
+      .get("https://asset-backend-xlfw.onrender.com/users")
       .then((response) => setUsers(response.data))
       .catch((err) => console.log("Error fetching users", err));
   }, []);
@@ -23,7 +23,7 @@ function UsersList() {
 
   const handleSaveClick = () => {
     axios
-      .put(`http://localhost:3001/users/${editingUserId}`, userEditData)
+      .put(`https://asset-backend-xlfw.onrender.com/users/${editingUserId}`, userEditData)
       .then((response) => {
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
@@ -46,7 +46,7 @@ function UsersList() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3001/users/${id}`)
+      .delete(`https://asset-backend-xlfw.onrender.com/users/${id}`)
       .then(() => {
         setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
         alert("User deleted successfully!");

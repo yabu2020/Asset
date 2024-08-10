@@ -53,7 +53,7 @@ function ResetPassword() {
 
     // Proceed with password reset request
     axios
-      .post('http://localhost:3001/reset-password', { email, securityQuestion, securityAnswer, newPassword })
+      .post('https://asset-backend-xlfw.onrender.com/reset-password', { email, securityQuestion, securityAnswer, newPassword })
       .then((response) => {
         if (response.data.success) {
           setMessage('Password has been reset successfully. You will be redirected to the login page.');
@@ -71,7 +71,7 @@ function ResetPassword() {
   const fetchSecurityQuestion = () => {
     if (userId) {
       axios
-        .get('http://localhost:3001/security-question', { params: { userId } })
+        .get('https://asset-backend-xlfw.onrender.com/security-question', { params: { userId } })
         .then((response) => {
           setSecurityQuestion(response.data.securityQuestion || 'Security question not set.');
         })

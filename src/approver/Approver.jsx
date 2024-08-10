@@ -18,7 +18,7 @@ function AssetApprover() {
 
   const fetchAssignedAssets = () => {
     axios
-      .get("http://localhost:3001/assigned-assets")
+      .get("https://asset-backend-xlfw.onrender.com/assigned-assets")
       .then((response) => {
         //console.log("Fetched assigned assets:", response.data);
         setAssignedAssets(response.data);
@@ -43,7 +43,7 @@ function AssetApprover() {
   };
 
   const handleApprovalChange = (assignmentId, approved) => {
-    axios.put(`http://localhost:3001/approve-asset/${assignmentId}`, { approved })
+    axios.put(`https://asset-backend-xlfw.onrender.com/approve-asset/${assignmentId}`, { approved })
       .then(response => {
         fetchAssignedAssets(); // Refresh the list of assigned assets
 

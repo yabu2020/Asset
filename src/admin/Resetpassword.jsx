@@ -58,7 +58,7 @@ function Resetpassword() {
     }
 
     axios
-      .post("http://localhost:3001/resetpassword", {
+      .post("https://asset-backend-xlfw.onrender.com/resetpassword", {
         email: resetEmail,
         newPassword,
       })

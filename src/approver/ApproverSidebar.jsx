@@ -33,7 +33,7 @@ function ApproverSidebar({ children }) {
     
       const fetchAssignedAssets = (userId) => {
         axios
-          .get(`http://localhost:3001/assigned-assets/${userId}`)
+          .get(`https://asset-backend-xlfw.onrender.com/assigned-assets/${userId}`)
           .then((response) => setAssignedAssets(response.data))
           .catch((error) => setMessage(`Error: ${error.message}`));
       };
