@@ -33,17 +33,17 @@ function UserPage() {
 
   return (
     <div className="p-6 font-sans bg-gray-50 min-h-screen">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">Your Assigned Assets</h2>
+      <h2 className="text-2xl font-bold text-gray-500 ml-10 mb-6">Your Assigned Assets</h2>
       {hasError && <p className="text-red-600 text-lg mb-4">{message}</p>}
       {!hasError && assignedAssets.length === 0 && <p className="text-gray-500 text-lg mb-4">{message}</p>}
       
       {assignedAssets.length > 0 && (
-        <table className="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+        <table className="w-full border-collapse ml-10 bg-white shadow-md rounded ">
           <thead className="bg-gray-200">
             <tr>
-              <th className="py-3 px-4 text-left text-gray-700">Asset Name</th>
-              <th className="py-3 px-4 text-left text-gray-700">Asset SerialNo</th>
-              <th className="py-3 px-4 text-left text-gray-700">Date Assigned</th>
+              <th className="py-3 px-4 text-left text-green-400">Asset Name</th>
+              <th className="py-3 px-4 text-left text-green-400">Asset SerialNo</th>
+              <th className="py-3 px-4 text-left text-green-400">Date Assigned</th>
             </tr>
           </thead>
           <tbody>
@@ -58,14 +58,14 @@ function UserPage() {
         </table>
       )}
 
-      <div className="mt-6 p-4 bg-white shadow-md rounded-lg border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Manage Your Security Question</h3>
+      <div className="mt-4 p-4 ml-10 bg-gray-100 w-80 shadow-md rounded-lg border border-gray-200">
+        <h3 className="text-lg font-semibold text-gray-500 mb-2">Manage Your Security Question</h3>
         <p className="text-gray-600 text-sm mb-3">Update your security question to enhance your account security.</p>
         <Link 
           to={`/security-question/${userId}`} 
-          className="inline-block px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700 transition duration-200"
+          className="inline-block px-4 py-2 text-sm font-medium text-white bg-green-400 rounded-md shadow-sm hover:bg-gray-400 transition duration-200"
         >
-          Go to Security Question Page
+          Security Question Page
         </Link>
       </div>
     </div>

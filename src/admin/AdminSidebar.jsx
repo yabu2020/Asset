@@ -53,10 +53,10 @@ function Sidebar({ children }) {
         {isAuthenticated && location.pathname !== '/' && (
         <div style={{
             display:location.pathname==="/reset-password"? "none" :"flex" }}className="flex relative ">
-            <div className={`fixed top-0 left-0 bottom-0 bg-gray-300 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} text-white flex flex-col shadow-lg border-r border-gray-700`}>
-                <div className="flex items-center p-4">
-                    <h1 className={`${isOpen ? 'block' : 'hidden'} text-xl font-bold ml-2 text-green-400`}>Admin Page</h1>
-                    <div className="ml-auto text-2xl cursor-pointer pr-4 hover:bg-green-300 rounded-full p-1 transition-colors duration-200" onClick={toggle}>
+            <div className={`fixed top-0 left-0 bottom-0 bg-gray-200 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'} text-white flex flex-col shadow-lg border-r border-gray-700`}>
+            <div className="flex items-center p-4">
+                    <h1 className={`${isOpen ? 'block' : 'hidden'} text-2xl mt-4 font-bold ml-2 text-green-400`}>Admin Page</h1>
+                    <div className="ml-auto text-2xl mt-4 cursor-pointer pr-4 hover:bg-green-300 rounded-full p-1 transition-colors duration-200" onClick={toggle}>
                         <FaBars />
                     </div>
                 </div>
@@ -65,10 +65,10 @@ function Sidebar({ children }) {
                         <NavLink
                             to={item.path}
                             key={index}
-                            className="flex items-center py-2 px-4 hover:bg-green-400 transition-colors duration-200"
+                            className="flex items-center py-2 px-4 hover:bg-green-300 transition-colors duration-200"
                         >
-                            <div className="text-xl mb-4 mr-2">{item.icon}</div>
-                            <div className={`text-white text-xl ml-2 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
+                            <div className="text-xl mb-4  text-gray-300 mr-2">{item.icon}</div>
+                            <div className={`text-gray-400 text-xl mb-2 ml-2 ${isOpen ? 'block' : 'hidden'}`}>{item.name}</div>
                         </NavLink>
                     ))}
                 </div>
@@ -77,17 +77,17 @@ function Sidebar({ children }) {
             {assignedAssets.length > 0 && (
     <main>
         {children}
-        <div className="flex">
-            <div className="p-6 mb-0 mt-2 ml-80 rounded shadow" style={{ maxWidth: '1000px', maxHeight: '800px' }}>
+        <div className="w-full max-w-5xl ml-80 bg-white rounded-lg shadow-md">
+        <div className="p-6">
             <h2 className="text-3xl mt-4 font-bold text-gray-800 mb-6">Your Assigned Assets</h2>
             {message && <p className="text-red-600 text-lg mb-4">{message}</p>}
 
             <table className="w-full border-collapse bg-white shadow-md rounded-lg">
                 <thead className="bg-gray-200">
                     <tr>
-                        <th className="py-3 px-4 text-left text-gray-700">Asset Name</th>
-                        <th className="py-3 px-4 text-left text-gray-700">Asset SerialNo</th>
-                        <th className="py-3 px-4 text-left text-gray-700">Date Assigned</th>
+                        <th className="py-3 px-4 text-left text-green-400">Asset Name</th>
+                        <th className="py-3 px-4 text-left text-green-400">Asset SerialNo</th>
+                        <th className="py-3 px-4 text-left text-green-400">Date Assigned</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -75,8 +75,8 @@ function Resetpassword() {
   };
 
   return (
-    <div className="flex items-center ml-20 justify-center">
-      <div className="w-full max-w-2xl p-8 rounded-lg shadow-lg" style={{ width: '80%', marginLeft: "350px", padding: '80px 60px' }}>
+    <div className="flex items-center ml-20 mt-20 justify-center">
+      <div className="w-full max-w-2xl p-8 rounded-lg shadow-lg" style={{ width: '60%', marginLeft: "200px", padding: '60px 60px' }}>
         <form onSubmit={handlePasswordReset} className="w-full">
           <h2 className="text-2xl text-center font-bold text-green-400 mb-8">Reset Password</h2>
           <div className="mb-4">
@@ -130,7 +130,7 @@ function Resetpassword() {
             </button>
           </div>
 
-          <button type="submit" className="w-full bg-gray-400 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-200">Reset Password</button>
+          <button type="submit" className="w-1/2 bg-green-400 mt-4 ml-40 hover:bg-gray-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-200">Reset Password</button>
           {passwordError && <p className="text-red-500 mt-2">{passwordError}</p>}
           {resetMessage && <p className="text-blue-500 mt-2">{resetMessage}</p>}
         </form>

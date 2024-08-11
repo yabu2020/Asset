@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import clerkImage from '../assets/clerk.jpg';
+
 
 function RegisterAsset() {
   const [name, setName] = useState('');
@@ -64,13 +64,7 @@ function RegisterAsset() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cover"
-      style={{
-        backgroundImage: `url(${clerkImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+   
       <div className="flex items-center justify-center">
         <div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '780px' }}>
           <h1 className="text-2xl font-bold mb-6 text-center text-green-300">Register Asset</h1>
@@ -194,7 +188,7 @@ function RegisterAsset() {
           </form>
         </div>
       </div>
-    </div>
+  
   );
 }
 

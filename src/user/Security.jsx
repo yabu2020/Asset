@@ -64,22 +64,22 @@ function SecurityQuestionPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-gray-100 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Security Question</h2>
-      <p className="text-lg text-gray-600 mb-6">
-        <strong>Current Security Question:</strong> {securityQuestion}
+    <div className="max-w-2xl mx-auto p-8 bg-gray-50 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-semibold text-gray-800 mb-6">Security Question</h2>
+      <p className="text-lg text-gray-500 mb-6">
+        <strong>Your Current Security Question is:</strong> {securityQuestion}
       </p>
 
       <form onSubmit={handleUpdateSecurityQuestion} className="space-y-6">
         <div>
-          <label htmlFor="newSecurityQuestion" className="block text-lg font-medium text-gray-700 mb-2">
-            <strong>New Security Question</strong>
+          <label htmlFor="newSecurityQuestion" className="block text-lg font-medium text-gray-500 mb-2">
+            <strong>Set Your New Security Question</strong>
           </label>
           <select
             id="newSecurityQuestion"
             value={newSecurityQuestion}
             onChange={(e) => setNewSecurityQuestion(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 rounded-md text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
           >
             <option value="" disabled>Select a question</option>
             {predefinedQuestions.map((question, index) => (
@@ -88,8 +88,8 @@ function SecurityQuestionPage() {
           </select>
         </div>
         <div>
-          <label htmlFor="newSecurityAnswer" className="block text-lg font-medium text-gray-700 mb-2">
-            <strong>New Security Answer</strong>
+          <label htmlFor="newSecurityAnswer" className="block text-lg font-medium text-gray-500 mb-2">
+            <strong>Your New Security Answer</strong>
           </label>
           <input
             type="text"
@@ -97,12 +97,12 @@ function SecurityQuestionPage() {
             placeholder="Enter your new security answer"
             value={newSecurityAnswer}
             onChange={(e) => setNewSecurityAnswer(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
           />
         </div>
         <button
           type="submit"
-          className="w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-1/2 py-3 ml-40 px-4 bg-green-400 text-white font-semibold rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           Update Security Question
         </button>

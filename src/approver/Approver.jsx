@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import clerkImage from '../assets/clerk.jpg';
+
 
 
 function AssetApprover() {
@@ -57,12 +57,8 @@ function AssetApprover() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen" style={{
-      backgroundImage: `url(${clerkImage})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}>
-      <div className="w-full max-w-5xl mx-auto p-6 rounded-lg shadow-md bg-white">
+  
+      <div className="w-full max-w-5xl ml-60 p-6 rounded-lg shadow-md bg-white">
         {/* Header and Link Container */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-400">Assigned Assets</h1>
@@ -71,7 +67,7 @@ function AssetApprover() {
         {message && <p className="text-red-600 text-lg mb-4">{message}</p>}
 
         <div className="mb-6 flex items-center">
-          <label htmlFor="search-bar" className="text-md font-medium text-gray-400 mr-4">Search User by Email:</label>
+          <label htmlFor="search-bar" className="text-lg font-medium text-gray-500 mr-4">Search User by Email:</label>
           <input
             id="search-bar"
             type="text"
@@ -125,7 +121,7 @@ function AssetApprover() {
           </tbody>
         </table>
       </div>
-    </div>
+    
   );
 }
 

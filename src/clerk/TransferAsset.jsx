@@ -105,7 +105,7 @@ return (
               <option value="" disabled>Select a User</option>
               {users.map((user) => (
                 <option key={user.email} value={user._id}>
-                  {user.email}
+                  {user.email}- {user.name} - -{user.department}
                 </option>
               ))}
             </select>

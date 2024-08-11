@@ -83,11 +83,11 @@ function ResetPassword() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Reset Password</h2>
+    <div className="max-w-md mx-auto p-6 bg-gray-100 shadow-lg rounded-lg border border-gray-200">
+      <h1 className="text-2xl font-bold text-green-500 mb-6">Reset Password</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+          <label htmlFor="email" className="block text-md font-semibold text-gray-500">Email</label>
           <input
             type="email"
             id="email"
@@ -95,18 +95,18 @@ function ResetPassword() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={fetchSecurityQuestion}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2  bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 sm:text-sm"
           />
         </div>
         {email && (
           <>
             <div>
-              <label htmlFor="securityQuestion" className="block text-sm font-medium text-gray-700">Security Question</label>
+              <label htmlFor="securityQuestion" className="block text-md font-semibold mt-4  text-gray-500">Security Question</label>
               <select
                 id="securityQuestion"
                 value={securityQuestion}
                 onChange={(e) => setSecurityQuestion(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-green-400 focus:border-gray-500 sm:text-sm"
               >
                 <option value="" disabled>Select a security question</option>
                 {predefinedQuestions.map((question, index) => (
@@ -115,18 +115,18 @@ function ResetPassword() {
               </select>
             </div>
             <div>
-              <label htmlFor="securityAnswer" className="block text-sm font-medium text-gray-700">Answer Security Question</label>
+              <label htmlFor="securityAnswer" className="block text-md font-semibold mt-4 text-gray-500">Answer Security Question</label>
               <input
                 type="text"
                 id="securityAnswer"
                 placeholder="Enter your answer"
                 value={securityAnswer}
                 onChange={(e) => setSecurityAnswer(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-green-400 focus:border-gray-500 sm:text-sm"
               />
             </div>
             <div>
-              <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">New Password</label>
+              <label htmlFor="newPassword" className="block text-md font-semibold mt-4 text-gray-500">New Password</label>
               <div className="relative">
                 <input
                   type={showNewPassword ? 'text' : 'password'}
@@ -134,7 +134,7 @@ function ResetPassword() {
                   placeholder="Enter new password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-green-400 focus:border-gray-500 sm:text-sm"
                 />
                 <div
                   className="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
@@ -146,7 +146,7 @@ function ResetPassword() {
               </div>
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm New Password</label>
+              <label htmlFor="confirmPassword" className="block text-md mt-4 font-semibold text-gray-500">Confirm New Password</label>
               <div className="relative">
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
@@ -154,7 +154,7 @@ function ResetPassword() {
                   placeholder="Confirm new password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border  bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 <div
                   className="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
@@ -169,7 +169,7 @@ function ResetPassword() {
         )}
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200"
+          className="w-1/2 px-4 py-2 bg-green-400 text-white font-semibold rounded-md mt-4 mb-6 ml-20 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200"
         >
           Reset Password
         </button>

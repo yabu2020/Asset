@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import clerkImage from '../assets/clerk.jpg';
 
 function AssetToUser() {
   const [assets, setAssets] = useState([]);
@@ -66,14 +65,8 @@ function AssetToUser() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cover"
-      style={{
-        backgroundImage: `url(${clerkImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-4xl mx-auto p-6 rounded-lg shadow-md bg-white">
+    
+      <div className="max-w-4xl mx-auto p-6 ml-40 rounded-lg shadow-md bg-white">
         <h2 className="text-3xl mt-4 font-bold text-gray-400 mb-6">Assign Asset to User</h2>
         {message && <p className="text-green-400 text-lg mb-4">{message}</p>}
 
@@ -156,7 +149,7 @@ function AssetToUser() {
           </tbody>
         </table>
       </div>
-    </div>
+    
   );
 }
 
