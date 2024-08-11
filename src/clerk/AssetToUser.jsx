@@ -17,7 +17,7 @@ function AssetToUser() {
 
   const fetchAssets = () => {
     axios
-      .get("https://asset-backend-xlfw.onrender.com/assets")
+      .get("http://localhost:3001/assets")
       .then((response) => {
         // console.log("Fetched assets:", response.data); // Log fetched assets
         setAssets(response.data.flatMap(category => category.assets)); // Flatten the asset array
