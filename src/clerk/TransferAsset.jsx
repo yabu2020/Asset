@@ -14,7 +14,7 @@ function TransferAsset() {
     // Fetch assets, users, and transfer history
     axios.get("https://asset-backend-xlfw.onrender.com/assets")
       .then(response => {
-        const assignedAssets = response.data.flatMap(category => category.assets).filter(asset => asset.status === 'Assigned');
+        const assignedAssets = response.data.flatMap(category => category.assets).filter(asset => asset.status === 'ssigned');
         setAssets(assignedAssets);
       })
       .catch(error => setMessage(`Error fetching assets: ${error.message}`));
@@ -34,7 +34,7 @@ function TransferAsset() {
       return;
     }
 
-    axios.post("https://asset-backend-xlfw.onrender.com/transferasset", {
+    axios.post("http://localhost:3001/transferasset", {
       assetId: selectedAsset,
       fromUserId: fromUser,
       toUserId: toUser

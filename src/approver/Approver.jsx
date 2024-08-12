@@ -41,16 +41,16 @@ function AssetApprover() {
   };
 
   const handleApprovalChange = (assignmentId, isChecked) => {
-    axios.put(`https://asset-backend-xlfw.onrender.com/${assignmentId}`, { Approved: isChecked })
-      .then(response => {
-        fetchAssignedAssets(); // Refresh the list of assigned assets
-        if (isChecked) {
-          alert("Successfully approved");
-        }
-      })
-      .catch(error => setMessage(`Error updating approval status: ${error.message}`));
-  };
-  
+  axios.put(`http://localhost:3001/approve-asset/${assignmentId}`, { Approved: isChecked })
+    .then(response => {
+      fetchAssignedAssets(); // Refresh the list of assigned assets
+      if (isChecked) {
+        alert("Successfully approved");
+      }
+    })
+    .catch(error => setMessage(`Error updating approval status: ${error.message}`));
+};
+
   
   return (
     <div className="w-full max-w-5xl ml-60 p-6 rounded-lg shadow-md bg-white">
