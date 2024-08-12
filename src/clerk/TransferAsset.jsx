@@ -12,7 +12,7 @@ function TransferAsset() {
 
   useEffect(() => {
     // Fetch assets, users, and transfer history
-    axios.get("http://localhost:3001/assets")
+    axios.get("https://asset-backend-xlfw.onrender.com/assets")
       .then(response => {
         setAssets(response.data.flatMap(category => category.assets));
       })

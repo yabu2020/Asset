@@ -13,8 +13,8 @@ function ListAssets() {
     const fetchData = async () => {
       try {
         const [assetsResponse, categoriesResponse] = await Promise.all([
-          axios.get('http://localhost:3001/assets'),
-          axios.get('http://localhost:3001/categories')
+          axios.get('https://asset-backend-xlfw.onrender.com/assets'),
+          axios.get('https://asset-backend-xlfw.onrender.com/categories')
         ]);
 
         setAssets(assetsResponse.data);
