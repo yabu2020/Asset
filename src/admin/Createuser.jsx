@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import icons
 
@@ -8,11 +8,24 @@ function Createuser({ setUsers }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("");
+  const [departments, setDepartments] = useState([]); // State for departments
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [formError, setFormError] = useState(""); // New state for general form errors
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
+  useEffect(() => {
+    // Fetch departments on component mount
+    axios.get("http://localhost:3001/departments")
+      .then(response => {
+        setDepartments(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching departments:", error);
+        setFormError("Error fetching departments");
+      });
+  }, []);
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,7 +33,6 @@ function Createuser({ setUsers }) {
   };
 
   const validatePassword = (password) => {
-    // Updated regex: at least 6 characters, with at least one letter and one number
     const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return re.test(password);
   };
@@ -54,7 +66,7 @@ function Createuser({ setUsers }) {
     }
 
     axios
-      .post("https://asset-backend-xlfw.onrender.com/adduser", { role, name, email, password, department })
+      .post("http://localhost:3001/adduser", { role, name, email, password, department })
       .then((result) => {
         setUsers(prevUsers => [...prevUsers, result.data]);
         alert("User added successfully!");
@@ -131,11 +143,10 @@ function Createuser({ setUsers }) {
                 onChange={(e) => setDepartment(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 border-gray-300 focus:ring-green-100 sm:text-sm"
               >
-                <option value="">Department</option>
-                <option value="IT">IT</option>
-                <option value="IS">IS</option>
-                <option value="ES">ES</option>
-                <option value="CS">CS</option>
+                <option value="">Select Department</option>
+                {departments.map((dept) => (
+                  <option key={dept._id} value={dept._id}>{dept.department}</option>
+                ))}
               </select>
             </div>
           </div>

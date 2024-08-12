@@ -171,9 +171,8 @@ function RegisterAsset() {
                 className="w-full px-3 py-2 bg-gray-200 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 border-gray-300"
               >
                 <option value="Available">Available</option>
-                <option value="In Use">In Use</option>
-                <option value="Under Maintenance">Under Maintenance</option>
-                <option value="Retired">Retired</option>
+                <option value="Assigned">Assigned</option>
+                <option value="Approved">Approved</option>
               </select>
             </div>
 

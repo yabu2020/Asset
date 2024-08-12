@@ -8,6 +8,7 @@ import Userpage from "../user/Userpage";
 import Approver from "../approver/Approver";
 import ApproverSidebar from "../approver/ApproverSidebar";
 import AdminSidebar from "../admin/AdminSidebar";
+import Department from "../admin/Department";
 import Resetpassword from "../admin/Resetpassword";
 import Createuser from '../admin/Createuser';
 import UsersList from '../admin/UsersList';
@@ -45,6 +46,7 @@ function App() {
           <Route path="/reset-password" element={<Reset />} />
           <Route path="/admin/:userId" element={<AdminSidebar cUSer={cUSer} />} />
           <Route path="/users" element={<UsersList users={users} />} />
+          <Route path="/department" element={<Department />} />
           <Route path="/adduser" element={<Createuser setUsers={setUsers} />} />
           <Route path="/resetpassword" element={<Resetpassword />} />
           {/* Clerk */}

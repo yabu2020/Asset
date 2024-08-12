@@ -13,7 +13,7 @@ function ListAssets() {
     const fetchData = async () => {
       try {
         const [assetsResponse, categoriesResponse] = await Promise.all([
-          axios.get('https://asset-backend-xlfw.onrender.com/assets'),
+          axios.get('http://localhost:3001/assets'),
           axios.get('https://asset-backend-xlfw.onrender.com/categories')
         ]);
 
@@ -45,13 +45,18 @@ function ListAssets() {
     setEditData(prevData => ({ ...prevData, [name]: value }));
   };
 
+  // Save changes for assets
   const saveChanges = (assetId) => {
-    axios.put(`https://asset-backend-xlfw.onrender.com/updateasset/${assetId}`, editData)
+    axios.put(`http://localhost:3001/updateasset/${assetId}`, editData)
       .then(response => {
-        setAssets(assets.map(categoryGroup => ({
-          ...categoryGroup,
-          assets: categoryGroup.assets.map(asset => asset._id === assetId ? response.data : asset)
-        })));
+        setAssets(prevAssets => 
+          prevAssets.map(categoryGroup => ({
+            ...categoryGroup,
+            assets: categoryGroup.assets.map(asset => 
+              asset._id === assetId ? response.data : asset
+            )
+          }))
+        );
         setEditingAsset(null);
         setEditData({});
         setMessage('Asset updated successfully');
@@ -60,6 +65,8 @@ function ListAssets() {
         setMessage(`Error: ${error.response ? error.response.data.message : error.message}`);
       });
   };
+  
+
 
   const cancelEditing = () => {
     setEditingAsset(null);

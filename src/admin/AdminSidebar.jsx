@@ -26,6 +26,11 @@ function Sidebar({ children }) {
             icon: <FaUserAlt />
         },
         {
+            path: "/department",
+            name: "Department",
+            icon: <FaUserAlt />
+        },
+        {
             path: "/resetpassword",
             name: "Reset Password",
             icon: <FaCommentAlt />

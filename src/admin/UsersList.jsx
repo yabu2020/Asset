@@ -11,7 +11,7 @@ function UsersList() {
 
   useEffect(() => {
     axios
-      .get("https://asset-backend-xlfw.onrender.com/users")
+      .get("http://localhost:3001/users")
       .then((response) => setUsers(response.data))
       .catch((err) => console.log("Error fetching users", err));
   }, []);
