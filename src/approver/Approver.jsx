@@ -41,7 +41,7 @@ function AssetApprover() {
   };
 
   const handleApprovalChange = (assignmentId, isChecked) => {
-    axios.put(`http://localhost:3001/approve-asset/${assignmentId}`, { Approved: isChecked })
+    axios.put(`https://asset-backend-xlfw.onrender.com/${assignmentId}`, { Approved: isChecked })
       .then(response => {
         fetchAssignedAssets(); // Refresh the list of assigned assets
         if (isChecked) {

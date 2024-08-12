@@ -24,7 +24,7 @@ function Department() {
     };
 
     // Send data to the backend
-    axios.post('http://localhost:3001/department', payload)
+    axios.post('https://asset-backend-xlfw.onrender.com/department', payload)
       .then(response => {
         setMessage('Department registered successfully.');
         setCode('');
