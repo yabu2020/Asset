@@ -17,7 +17,7 @@ function Createuser({ setUsers }) {
 
   useEffect(() => {
     // Fetch departments on component mount
-    axios.get("http://localhost:3001/departments")
+    axios.get("https://asset-backend-xlfw.onrender.com/departments")
       .then(response => {
         setDepartments(response.data);
       })
@@ -66,7 +66,7 @@ function Createuser({ setUsers }) {
     }
 
     axios
-      .post("http://localhost:3001/adduser", { role, name, email, password, department })
+      .post("https://asset-backend-xlfw.onrender.com/adduser", { role, name, email, password, department })
       .then((result) => {
         setUsers(prevUsers => [...prevUsers, result.data]);
         alert("User added successfully!");

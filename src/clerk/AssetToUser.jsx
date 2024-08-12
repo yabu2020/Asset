@@ -53,7 +53,7 @@ function AssetToUser() {
     }
 
     axios
-      .post("http://localhost:3001/giveasset", {
+      .post("https://asset-backend-xlfw.onrender.com/giveasset", {
         assetId: selectedAsset,
         userId: selectedUser,
       })

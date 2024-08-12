@@ -34,7 +34,7 @@ function TransferAsset() {
       return;
     }
 
-    axios.post("http://localhost:3001/transferasset", {
+    axios.post("https://asset-backend-xlfw.onrender.com/transferasset", {
       assetId: selectedAsset,
       fromUserId: fromUser,
       toUserId: toUser
