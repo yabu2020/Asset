@@ -84,7 +84,7 @@ function ListAssets() {
         <div>
           {assets.length > 0 ? assets.map((categoryGroup, index) => (
             <div key={index} className="mb-6">
-              <h2 className="text-2xl font-bold  mb-4">{categoryMap[categoryGroup._id] || "Unknown Category"}</h2> {/* Display category name */}
+              <h2 className="text-xl font-semibold  mb-4">{categoryMap[categoryGroup._id] || "Unknown Category"}</h2> {/* Display category name */}
               <table className="w-full flex-grow min-w-[540px]">
                 <thead>
                   <tr>
