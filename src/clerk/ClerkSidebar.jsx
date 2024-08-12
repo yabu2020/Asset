@@ -299,7 +299,7 @@ function ClerkSidebar({ children }) {
                                 {categories.map((cat, index) => (
                                     <Boxwrapper key={index} imageUrl={getImageUrl(cat.category)}>
                                         <div className="text-lg font-bold mt-2 text-green-400 font-serif">{cat.category}</div>
-                                        <div className="text-lg font-bold ml-6 text-green-400 font-serif">Quantity: {cat.quantity}</div>
+                                        <div className="text-lg font-bold ml-6 text-green-400 font-serif">{cat.quantity}</div>
                                     </Boxwrapper>
                                 ))}
                                 </div>
