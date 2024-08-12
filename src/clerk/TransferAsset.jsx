@@ -14,7 +14,7 @@ function TransferAsset() {
     // Fetch assets, users, and transfer history
     axios.get("https://asset-backend-xlfw.onrender.com/assets")
       .then(response => {
-        const assignedAssets = response.data.flatMap(category => category.assets).filter(asset => asset.status === 'ssigned');
+        const assignedAssets = response.data.flatMap(category => category.assets).filter(asset => asset.status === 'Assigned');
         setAssets(assignedAssets);
       })
       .catch(error => setMessage(`Error fetching assets: ${error.message}`));
