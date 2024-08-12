@@ -38,7 +38,7 @@ function UserPage() {
       {!hasError && assignedAssets.length === 0 && <p className="text-gray-500 text-lg mb-4">{message}</p>}
       
       {assignedAssets.length > 0 && (
-        <table className="w-full border-collapse ml-10 bg-white shadow-md rounded ">
+        <table className="w-full border-collapse ml-10 bg-white shadow-md rounded">
           <thead className="bg-gray-200">
             <tr>
               <th className="py-3 px-4 text-left text-green-400">Asset Name</th>
@@ -63,9 +63,18 @@ function UserPage() {
         <p className="text-gray-600 text-sm mb-3">Update your security question to enhance your account security.</p>
         <Link 
           to={`/security-question/${userId}`} 
-          className="inline-block px-4 py-2 text-sm font-medium text-white bg-green-400 rounded-md shadow-sm hover:bg-gray-400 transition duration-200"
+          className="inline-block px-4 py-2 text-sm font-medium text-white bg-green-400 rounded-md shadow-sm hover:bg-green-500 transition duration-200"
         >
           Security Question Page
+        </Link>
+      </div>
+
+      <div className="mt-4 ml-10">
+        <Link 
+          to="/" 
+          className="inline-block px-4 py-2 text-sm font-medium text-white bg-green-400 rounded-md shadow-sm hover:bg-gray-400 transition duration-200"
+        >
+          Sign Out
         </Link>
       </div>
     </div>

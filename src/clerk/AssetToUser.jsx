@@ -66,7 +66,7 @@ function AssetToUser() {
 
   return (
     
-      <div className="max-w-4xl mx-auto p-6 ml-40 rounded-lg shadow-md bg-white">
+      <div className="max-w-4xl mx-auto p-6 ml-60 rounded-lg shadow-md bg-white">
         <h2 className="text-3xl mt-4 font-bold text-gray-400 mb-6">Assign Asset to User</h2>
         {message && <p className="text-green-400 text-lg mb-4">{message}</p>}
 

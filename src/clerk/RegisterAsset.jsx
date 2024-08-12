@@ -66,7 +66,7 @@ function RegisterAsset() {
   return (
    
       <div className="flex items-center justify-center">
-        <div className="w-full max-w-xl p-8 rounded-lg shadow-lg" style={{ maxWidth: '780px' }}>
+        <div className="w-full max-w-lg ml-20 p-8 rounded-lg shadow-lg" style={{ maxWidth: '780px' }}>
           <h1 className="text-2xl font-bold mb-6 text-center text-green-300">Register Asset</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
           {message && <p className="text-green-400 text-sm mt-4">{message}</p>}
